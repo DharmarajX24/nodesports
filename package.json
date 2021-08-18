@@ -1,0 +1,22 @@
+{
+  "name": "nodesports",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DharmarajX24/nodesports.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DharmarajX24/nodesports/issues"
+  },
+  "homepage": "https://github.com/DharmarajX24/nodesports#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
