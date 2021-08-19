@@ -1,7 +1,7 @@
-// pages/index.js
 import { useUser } from "@auth0/nextjs-auth0";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
-export default function Index() {
+export default withPageAuthRequired(() => {
   const { user, error, isLoading } = useUser();
 
   if (isLoading) return <div>Loading...</div>;
@@ -10,7 +10,7 @@ export default function Index() {
   if (user) {
     return (
       <>
-        <div>Home Page</div>
+        <div>Dashboard Page</div>
         <div>
           {user.name}! <a href="/api/auth/logout">Logout</a>
         </div>
@@ -19,4 +19,4 @@ export default function Index() {
   }
 
   return <a href="/api/auth/login">Login</a>;
-}
+});
