@@ -7,8 +7,6 @@ export default async function handler(req, res) {
     body: user,
   } = req;
 
-  console.log(`authorization: ${authorization}`);
-
   if (method === "POST") {
     // Add new user to database
     // Check if request is triggered by Auth0 hooks
