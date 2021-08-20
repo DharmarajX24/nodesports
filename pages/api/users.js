@@ -1,15 +1,17 @@
 import UsersDAO from "../../dao/users";
 
 export default async function handler(req, res) {
-  const { method } = req;
+  const {
+    method,
+    headers: { authorization },
+    body: user,
+  } = req;
+
+  console.log(`authorization: ${authorization}`);
 
   if (method === "POST") {
     // Add new user to database
     // Check if request is triggered by Auth0 hooks
-    const {
-      headers: { authorization },
-      body: user,
-    } = req;
     const [type, token] = authorization.split(" ");
 
     if (type !== "Bearer" || token !== process.env.AUTH0_WEBHOOK_SECRET) {
