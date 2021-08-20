@@ -1,7 +1,8 @@
 import React from "react";
+import OrganizeComp from "../components/organize/OrganizeComp";
 
 function Organize() {
-  return <div>Organize page</div>;
+  return <OrganizeComp />;
 }
 
 export default Organize;
