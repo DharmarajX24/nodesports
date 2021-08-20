@@ -1,9 +1,8 @@
-import { mongo } from "../init/mongodb";
-
-const usersCol = mongo().collection("users");
+import { connectToDatabase } from "../lib/mongodb";
 
 export default class UsersDAO {
-    static addUser = async (user) => {
-        return usersCol.insertOne(...user)
-    }
+  static addUser = async (user) => {
+    const { db } = await connectToDatabase();
+    return db.collection("users").insertOne(...user);
+  };
 }
