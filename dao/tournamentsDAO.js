@@ -9,7 +9,6 @@ export default class TournamentsDAO {
       description: null,
       image: null,
       createdBy: userId,
-      createdAt: Date.now(),
       time: {
         start: 0,
         end: 0,
