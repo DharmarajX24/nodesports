@@ -6,6 +6,7 @@ export default class TournamentsDAO {
     const newTournamentObj = {
       name,
       game,
+      description: null,
       image: null,
       createdBy: userId,
       createdAt: Date.now(),
@@ -34,6 +35,9 @@ export default class TournamentsDAO {
 
   static getTournamentsByUser = async (userId) => {
     const { db } = await connectToDatabase();
-    return db.collection("tournaments").find({ createdBy: userId }).toArray();
+    return db
+      .collection("tournaments")
+      .find({ createdBy: userId }, { projection: { participants: 0 } })
+      .toArray();
   };
 }
