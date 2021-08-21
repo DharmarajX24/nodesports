@@ -1,10 +1,12 @@
 import { connectToDatabase } from "../lib/mongodb";
 
 export default class TournamentsDAO {
-  static addTournament = async (userId, name) => {
+  static addTournament = async (userId, name, game) => {
     const { db } = await connectToDatabase();
     const newTournamentObj = {
       name,
+      game,
+      image: null,
       createdBy: userId,
       createdAt: Date.now(),
       time: {
@@ -13,9 +15,10 @@ export default class TournamentsDAO {
       },
       participants: [],
     };
-    const { insertedId } = db
+    const {insertedId} = await db
       .collection("tournaments")
       .insertOne(newTournamentObj);
+    console.log(`New tournament ID: ${insertedId}`)
     return insertedId;
   };
 
