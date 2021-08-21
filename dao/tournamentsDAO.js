@@ -15,6 +15,13 @@ export default class TournamentsDAO {
         end: 0,
       },
       participants: [],
+      rules: [],
+      contact: {
+        email: null,
+        phone: null,
+        twitter: null,
+        discord: null,
+      },
     };
     const { insertedId } = await db
       .collection("tournaments")
