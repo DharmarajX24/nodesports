@@ -52,7 +52,7 @@ function Tournament({ createUserTournament, handlePopup, showPopUp, data }) {
       {showPopUp ? (
         <>
           <PopUp
-            closePopUp={() => setShowPopup(false)}
+            closePopUp={handlePopup}
             createUserTournament={createUserTournament}
           />
           <div className="fixed opacity-60 bg-black inset-0 overflow-y-auto"></div>
