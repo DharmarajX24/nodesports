@@ -1,4 +1,4 @@
-import UsersDAO from "../../dao/users";
+import UsersDAO from "../../dao/usersDAO";
 
 export default async function handler(req, res) {
   const {
