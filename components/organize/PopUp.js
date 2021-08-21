@@ -1,24 +1,6 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
-
-const games = [
-  {
-    value: "COC",
-    label: "Clash of clans",
-  },
-  {
-    value: "CR",
-    label: "Clash Royale",
-  },
-  {
-    value: "COD",
-    label: "COD",
-  },
-  {
-    value: "FIFA",
-    label: "FIFA",
-  },
-];
+import { games } from "../../data/games";
 
 function PopUp({ closePopUp, createUserTournament }) {
   const [game, setGame] = useState("COD");
@@ -73,8 +55,8 @@ function PopUp({ closePopUp, createUserTournament }) {
             variant="filled"
           >
             {games.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
+              <option key={option.image} value={option.name}>
+                {option.name}
               </option>
             ))}
           </TextField>
