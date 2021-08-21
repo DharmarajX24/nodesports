@@ -9,7 +9,7 @@ function OrganizeComp({ data }) {
   const [showPopUp, setShowPopup] = useState(false);
 
   const handlePopup = () => {
-    setShowPopup(true);
+    setShowPopup(!showPopUp);
   };
 
   const createUserTournament = async (e, name, game) => {
