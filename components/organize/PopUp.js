@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 
-const currencies = [
+const games = [
   {
     value: "COC",
     label: "Clash of clans",
@@ -20,12 +20,17 @@ const currencies = [
   },
 ];
 
-function PopUp({ closePopUp }) {
-  const [currency, setCurrency] = useState("EUR");
+function PopUp({ closePopUp, createUserTournament }) {
+  const [game, setGame] = useState("COD");
+  const [name, setName] = useState("");
 
   const handleChange = (event) => {
-    setCurrency(event.target.value);
+    setGame(event.target.value);
   };
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+
   return (
     <div className="fixed flex flex-row justify-center inset-0 z-10 items-center ">
       <div className="max-w-2xl  bg-secondary  w-full flex flex-col ">
@@ -49,13 +54,15 @@ function PopUp({ closePopUp }) {
             color="secondary"
             fullWidth
             label="Tournament name"
+            value={name}
+            onChange={handleNameChange}
             variant="filled"
           />
           <TextField
             id="filled-select-currency-native"
             select
             label="Game"
-            value={currency}
+            value={game}
             onChange={handleChange}
             SelectProps={{
               native: true,
@@ -65,7 +72,7 @@ function PopUp({ closePopUp }) {
             helperText="Please select your game"
             variant="filled"
           >
-            {currencies.map((option) => (
+            {games.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -79,7 +86,10 @@ function PopUp({ closePopUp }) {
             >
               Cancel
             </button>
-            <button className="bg-branding px-6 py-1 rounded ml-3  hover:text-branding hover:bg-white ">
+            <button
+              onClick={() => createUserTournament(name, game)}
+              className="bg-branding px-6 py-1 rounded ml-3  hover:text-branding hover:bg-white "
+            >
               Create
             </button>
           </div>

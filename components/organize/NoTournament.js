@@ -1,19 +1,11 @@
 import React, { useState } from "react";
 import PopUp from "./PopUp";
-import { useUser } from "@auth0/nextjs-auth0";
-import { useRouter } from "next/router";
 
-function NoTournament() {
-  const router = useRouter();
-  const { user } = useUser();
+function NoTournament({ createUserTournament }) {
   const [showPopUp, setShowPopup] = useState(false);
 
   const handlePopup = () => {
-    if (user) {
-      setShowPopup(true);
-    } else {
-      router.push("/api/auth/login");
-    }
+    setShowPopup(true);
   };
 
   return (
@@ -29,7 +21,10 @@ function NoTournament() {
       </button>
       {showPopUp ? (
         <>
-          <PopUp closePopUp={() => setShowPopup(false)} />
+          <PopUp
+            closePopUp={() => setShowPopup(false)}
+            createUserTournament={createUserTournament}
+          />
           <div className="fixed opacity-60 bg-black inset-0 overflow-y-auto"></div>
         </>
       ) : null}
