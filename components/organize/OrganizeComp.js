@@ -4,6 +4,7 @@ import Tournament from "./Tournament";
 
 function OrganizeComp({ data }) {
   const createUserTournament = async (name, game) => {
+    console.log("called");
     const res = await fetch("/api/tournaments", {
       method: "POST",
       body: JSON.stringify({ name, game }),
@@ -21,6 +22,7 @@ function OrganizeComp({ data }) {
     <div className="p-10">
       {data.length ? (
         <Tournament
+        createUserTournament={createUserTournament}
           data={data}
           handlePopup={handlePopup}
           showPopUp={showPopUp}

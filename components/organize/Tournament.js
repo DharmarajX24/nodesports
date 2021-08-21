@@ -1,11 +1,10 @@
 import React from "react";
 import PopUp from "./PopUp";
+import Image from "next/image";
 
 function Tournament({ createUserTournament, handlePopup, showPopUp, data }) {
   return (
     <div className="max-w-5xl mx-auto">
-      <div>Tournament exists !!</div>
-      <div>{JSON.stringify(data, null, 2)}</div>
       <div className="flex">
         <div className="shadow flex mt-6 flex-2 px-6">
           <input
@@ -36,6 +35,19 @@ function Tournament({ createUserTournament, handlePopup, showPopUp, data }) {
         >
           Create tournament
         </button>
+      </div>
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6 px-6">
+        {data.map((item) => (
+          <div key={item._id} className="bg-secondary">
+            <Image
+              width="400"
+              height="400"
+              src="https://images.unsplash.com/photo-1602673221577-0b56d7ce446b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FsbCUyMG9mJTIwZHV0eXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            />
+            <div>{item.name}</div>
+            <div>{item.game}</div>
+          </div>
+        ))}
       </div>
       {showPopUp ? (
         <>
