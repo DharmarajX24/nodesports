@@ -32,8 +32,8 @@ export default function ManageTournament({ data }) {
   const { id } = router.query;
   console.log({ data });
   return (
-    <div>
-      <ManageTabs />
+    <div className="py-10">
+      <ManageTabs data={data} />
     </div>
   );
 }

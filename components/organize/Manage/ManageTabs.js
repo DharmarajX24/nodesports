@@ -6,7 +6,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-
+import Overview from "./Overview";
 function ManageTabs(props) {
   const { children, value, index, ...other } = props;
 
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleTabs() {
+export default function MangaeTabs({ data }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -71,7 +71,9 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <ManageTabs value={value} index={0}>
-        Overview tab
+        <div className="pt-16">
+          <Overview data={data} />
+        </div>
       </ManageTabs>
       <ManageTabs value={value} index={1}>
         Edit tab
