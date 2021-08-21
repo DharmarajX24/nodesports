@@ -12,12 +12,25 @@ function OrganizeComp({ data }) {
     const result = await res.json();
     return result;
   };
+  const [showPopUp, setShowPopup] = useState(false);
+
+  const handlePopup = () => {
+    setShowPopup(true);
+  };
   return (
     <div className="p-10">
       {data.length ? (
-        <Tournament data={data} />
+        <Tournament
+          data={data}
+          handlePopup={handlePopup}
+          showPopUp={showPopUp}
+        />
       ) : (
-        <NoTournament createUserTournament={createUserTournament} />
+        <NoTournament
+          createUserTournament={createUserTournament}
+          handlePopup={handlePopup}
+          showPopUp={showPopUp}
+        />
       )}
     </div>
   );

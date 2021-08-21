@@ -1,13 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import PopUp from "./PopUp";
 
-function NoTournament({ createUserTournament }) {
-  const [showPopUp, setShowPopup] = useState(false);
-
-  const handlePopup = () => {
-    setShowPopup(true);
-  };
-
+function NoTournament({ createUserTournament, handlePopup, showPopUp }) {
   return (
     <div className="flex flex-col items-center p-10">
       <div className="text-3xl">
