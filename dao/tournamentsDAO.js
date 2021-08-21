@@ -34,6 +34,6 @@ export default class TournamentsDAO {
 
   static getTournamentsByUser = async (userId) => {
     const { db } = await connectToDatabase();
-    return db.collection("tournaments").find({ userId }).toArray();
+    return db.collection("tournaments").find({ createdBy: userId }).toArray();
   };
 }
