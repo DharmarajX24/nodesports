@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { connectToDatabase } from "../../../lib/mongodb";
 import { ObjectId } from "mongodb";
+import ManageTabs from "../../../components/organize/Manage/ManageTabs";
+import SimpleTabs from "../../../components/organize/Manage/ManageTabs";
 
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps(context) {
@@ -28,7 +30,10 @@ export default function ManageTournament({ data }) {
   const router = useRouter();
   console.log(router.query);
   const { id } = router.query;
-  console.log(id);
-
-  return <p> You are in http://localhost:3000/organize/tournament/{id}</p>;
+  console.log({ data });
+  return (
+    <div>
+      <ManageTabs />
+    </div>
+  );
 }
