@@ -8,17 +8,14 @@ export const getServerSideProps = withPageAuthRequired({
     const {
       user: { sub: userId },
     } = getSession(context.req, context.res);
-    console.log("server side user", userId);
 
     const { db } = await connectToDatabase();
-    const data = (
-      await db
-        .collection("tournaments")
-        .find({ createdBy: userId }, { projection: { participants: 0 } })
-        .toArray()
-    ).map(({ _id, ...rest }) => ({ id: _id.toString(), ...rest }));
+    const data = await db
+      .collection("tournaments")
+      .find({ createdBy: userId }, { projection: { participants: 0 } })
+      .toArray();
     // Pass data to the page via props
-    return { props: { data } };
+    return { props: { data: JSON.parse(JSON.stringify(data)) } };
   },
 });
 
