@@ -28,8 +28,11 @@ function Overview({ data }) {
         <hr />
         <div className="pt-6">
           <div className="text-xs text-gray-400">Date and time</div>
-          <div className="pb-2">Thursday,Aug 26th 2021</div>
-          <div className="text-gray-400 text-xs font-semibold">6:30 AM PDT</div>
+          <div className="pb-2">
+            {data.time.start !== 0
+              ? new Date(data.createdAt).toLocaleString()
+              : "Schedule unavailable"}
+          </div>
         </div>
       </div>
     </div>
