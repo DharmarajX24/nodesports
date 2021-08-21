@@ -9,6 +9,6 @@ export default async function handler(req, res) {
       body: { name },
     } = req;
     const newTournamentId = await TournamentsDAO.addTournament(name);
-    return res.status(200).json({data: newTournamentId})
+    return res.status(200).json({ data: newTournamentId });
   }
 }

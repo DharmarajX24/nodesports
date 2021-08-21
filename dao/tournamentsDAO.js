@@ -13,8 +13,10 @@ export default class TournamentsDAO {
       },
       participants: [],
     };
-    const {insertedId} = db.collection("tournaments").insertOne(newTournamentObj);
-    return insertedId
+    const { insertedId } = db
+      .collection("tournaments")
+      .insertOne(newTournamentObj);
+    return insertedId;
   };
 
   static updateTournament = async (tournamentId, data) => {
