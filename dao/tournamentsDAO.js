@@ -1,4 +1,5 @@
 import { connectToDatabase } from "../lib/mongodb";
+import { ObjectId } from "mongodb";
 
 export default class TournamentsDAO {
   static addTournament = async (userId, name, game) => {
@@ -22,9 +23,17 @@ export default class TournamentsDAO {
     return insertedId;
   };
 
-  static updateTournament = async (tournamentId, data) => {
+  static updateTournament = async (userId, tournamentId, data) => {
     const { db } = await connectToDatabase();
-    return db.collection("tournaments").updateOne({ tournamentId }, data);
+    console.log(
+      `Updating ${tournamentId} by ${userId} with data ${JSON.stringify(data)}`
+    );
+    return db
+      .collection("tournaments")
+      .updateOne(
+        { createdBy: userId, _id: new ObjectId(tournamentId) },
+        { $set: data }
+      );
   };
 
   static getTournamentById = async (tournamentId) => {
