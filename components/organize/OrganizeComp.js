@@ -1,28 +1,41 @@
 import React, { useState, useEffect } from "react";
 import NoTournament from "./NoTournament";
 import Tournament from "./Tournament";
+import { useRouter } from "next/router";
 
 function OrganizeComp({ data }) {
-  const createUserTournament = async (name, game) => {
+  const router = useRouter();
+
+  const [showPopUp, setShowPopup] = useState(false);
+
+  const handlePopup = () => {
+    setShowPopup(true);
+  };
+
+  const createUserTournament = async (e, name, game) => {
+    e.preventDefault();
     console.log("called");
     const res = await fetch("/api/tournaments", {
       method: "POST",
       body: JSON.stringify({ name, game }),
       headers: { "Content-Type": "application/json" },
     });
-    const result = await res.json();
-    return result;
-  };
-  const [showPopUp, setShowPopup] = useState(false);
+    setShowPopup(false);
 
-  const handlePopup = () => {
-    setShowPopup(true);
+    const { data, error } = await res.json();
+
+    if (data) {
+      await router.push(`/organize/tournament/${data}`);
+    } else {
+      console.log(error);
+    }
   };
+
   return (
     <div className="p-10">
       {data.length ? (
         <Tournament
-        createUserTournament={createUserTournament}
+          createUserTournament={createUserTournament}
           data={data}
           handlePopup={handlePopup}
           showPopUp={showPopUp}

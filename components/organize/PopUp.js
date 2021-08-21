@@ -87,7 +87,7 @@ function PopUp({ closePopUp, createUserTournament }) {
               Cancel
             </button>
             <button
-              onClick={() => createUserTournament(name, game)}
+              onClick={(e) => createUserTournament(e, name, game)}
               className="bg-branding px-6 py-1 rounded ml-3  hover:text-branding hover:bg-white "
             >
               Create
