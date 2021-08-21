@@ -10,6 +10,9 @@ module.exports = {
         greytext: "#ACADB1",
         secondarybranding: "#1380F0",
       },
+      flex: {
+        2: "2",
+      },
     },
   },
   variants: {
