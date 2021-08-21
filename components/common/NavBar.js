@@ -45,10 +45,7 @@ function NavBar() {
           </div>
         ) : (
           <Link href="/api/auth/login">
-            <a
-              className="bg-branding font-medium  px-6 py-1 rounded hover:bg-white hover:text-branding hover:border-branding hover:border-2 hover:border-solid"
-              href="/api/auth/login"
-            >
+            <a className="bg-branding font-medium  px-6 py-1 rounded hover:bg-white hover:text-branding hover:border-branding hover:border-2 hover:border-solid">
               Login
             </a>
           </Link>
