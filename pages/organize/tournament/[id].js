@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { connectToDatabase } from "../../../lib/mongodb";
+import { ObjectId } from "mongodb";
 
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps(context) {
@@ -13,11 +14,11 @@ export const getServerSideProps = withPageAuthRequired({
     const { db } = await connectToDatabase();
     const data = await db
       .collection("tournaments")
-      .findOne({ _id: id, createdBy: userId });
+      .findOne({ _id: new ObjectId(id), createdBy: userId });
     console.log(data);
 
     if (!data) return { notFound: true };
-    return { props: { data } };
+    return { props: { data: JSON.parse(JSON.stringify(data)) } };
   },
 });
 
