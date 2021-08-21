@@ -15,10 +15,10 @@ export default class TournamentsDAO {
       },
       participants: [],
     };
-    const {insertedId} = await db
+    const { insertedId } = await db
       .collection("tournaments")
       .insertOne(newTournamentObj);
-    console.log(`New tournament ID: ${insertedId}`)
+    console.log(`New tournament ID: ${insertedId}`);
     return insertedId;
   };
 
