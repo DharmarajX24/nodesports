@@ -13,6 +13,12 @@ module.exports = {
       flex: {
         2: "2",
       },
+      margin: {
+        threedotfivepx: "3.5px",
+      },
+      boxShadow: {
+        game: "0 0 24px #1380f0",
+      },
     },
   },
   variants: {
