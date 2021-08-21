@@ -20,7 +20,6 @@ function OrganizeComp({ data }) {
       body: JSON.stringify({ name, game }),
       headers: { "Content-Type": "application/json" },
     });
-    setShowPopup(false);
 
     const { data, error } = await res.json();
 
@@ -29,6 +28,8 @@ function OrganizeComp({ data }) {
     } else {
       console.log(error);
     }
+
+    setShowPopup(false);
   };
 
   return (
