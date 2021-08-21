@@ -1,7 +1,12 @@
 import React from "react";
 
-function Tournament() {
-  return <div>hehe</div>;
+function Tournament({ data }) {
+  return (
+    <div>
+      <div>Tournament exists !!</div>
+      <div>{JSON.stringify(data, null, 2)}</div>
+    </div>
+  );
 }
 
 export default Tournament;

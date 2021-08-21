@@ -18,11 +18,10 @@ export const getServerSideProps = withPageAuthRequired({
         .toArray()
     ).map(({ _id, ...rest }) => ({ id: _id.toString(), ...rest }));
     // Pass data to the page via props
-    return { props: { data: { ...data } } };
+    return { props: { data } };
   },
 });
 
 export default function Organize({ user, data }) {
-  console.log(data);
-  return <OrganizeComp />;
+  return <OrganizeComp data={data} />;
 }
