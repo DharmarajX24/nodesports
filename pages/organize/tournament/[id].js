@@ -2,8 +2,7 @@ import { useRouter } from "next/router";
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { connectToDatabase } from "../../../lib/mongodb";
 import { ObjectId } from "mongodb";
-import ManageTabs from "../../../components/organize/Manage/ManageTabs";
-import SimpleTabs from "../../../components/organize/Manage/ManageTabs";
+import ManageTabPanel from "../../../components/organize/Manage/ManageTabPanel";
 
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps(context) {
@@ -33,7 +32,7 @@ export default function ManageTournament({ data }) {
   console.log({ data });
   return (
     <div className="py-10">
-      <ManageTabs data={data} />
+      <ManageTabPanel data={data} />
     </div>
   );
 }
