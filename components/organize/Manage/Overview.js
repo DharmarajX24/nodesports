@@ -8,12 +8,7 @@ function Overview({ data }) {
       <Image src={Hero} height="400" />
       <div className="text-gray-400 py-4">
         <div className="py-2 font-semibold text-lg">About this tournament</div>
-        <div>
-          Random text Call of Duty is a first-person shooter video game based on
-          id Tech 3, and was released on October 29, 2003. The game was
-          developed by Infinity Ward and published by Activision. The game
-          simulates the infantry and combined arms warfare of World War II.
-        </div>
+        <div>{data.description || "TBD"}</div>
       </div>
 
       <div>
