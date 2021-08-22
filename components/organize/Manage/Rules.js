@@ -23,7 +23,8 @@ export default function Rules({ data }) {
         setRules(rules.concat([null]));
     }
     function removeRule(index) {
-        setRules(rules.filter((r, i) => i != index));
+        alert(index);
+        setRules(rules=>rules.filter((item, i) => i !== index));
     }
     const classes = useStyles();
     return (
@@ -37,11 +38,10 @@ export default function Rules({ data }) {
                             <Grid item xs={10}>
                                 <TextField
                                     id="outlined-multiline-static"
-                                    label="Multiline"
+                                    label="Rule"
                                     fullWidth
                                     multiline
                                     rows={1}
-                                    defaultValue="Default Value"
                                     variant="outlined"
                                     value={item}
                                     />
