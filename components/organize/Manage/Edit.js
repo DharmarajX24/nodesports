@@ -19,15 +19,26 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Edit({ data }) {
   const classes = useStyles();
-  const [platform, setPlatform] = useState("Xbox");
-  const [region, setRegion] = useState("ASIA");
 
-  const handlePlatformChange = (event) => {
-    setPlatform(event.target.value);
-  };
-  const handleRegionChange = (event) => {
-    setRegion(event.target.value);
-  };
+  const [details, setDetails] = useState({
+    description: "",
+    platform: "Xbox",
+    region: "ASIA",
+    selectedDate: "2014-08-18T21:11:54",
+  });
+
+  function handleChange(evt) {
+    const value = evt.target.value;
+    setDetails({
+      ...details,
+      [evt.target.name]: value,
+    });
+
+    console.log({
+      ...details,
+      [evt.target.name]: value,
+    });
+  }
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
@@ -37,7 +48,9 @@ export default function Edit({ data }) {
           label="Description"
           multiline
           rows={4}
-          defaultValue="Details of your tournament goes here"
+          onChange={handleChange}
+          name="description"
+          value={details.description}
           color="secondary"
           InputLabelProps={{
             style: { color: "#EB2B44" },
@@ -55,9 +68,10 @@ export default function Edit({ data }) {
             <TextField
               id="filled-select-currency-native"
               select
+              name="platform"
               label="platform"
-              value={platform}
-              onChange={handlePlatformChange}
+              value={details.platform}
+              onChange={handleChange}
               SelectProps={{
                 native: true,
               }}
@@ -81,9 +95,10 @@ export default function Edit({ data }) {
             <TextField
               id="filled-select-currency-native"
               select
+              name="region"
               label="region"
-              value={region}
-              onChange={handleRegionChange}
+              value={details.region}
+              onChange={handleChange}
               SelectProps={{
                 native: true,
               }}
@@ -107,18 +122,20 @@ export default function Edit({ data }) {
           </div>
           <TextField
             id="datetime-local"
+            name="selectedDate"
             label="game date"
             type="datetime-local"
-            defaultValue="2020-05-24T10:30"
             className={classes.textField}
             InputLabelProps={{
               shrink: true,
-              style: { color: "#fff" },
+              style: { color: "#EB2B44" },
             }}
             InputProps={{
               style: { color: "#fff" },
             }}
             color="secondary"
+            value={details.selectedDate}
+            onChange={handleChange}
           />
         </div>
       </div>
