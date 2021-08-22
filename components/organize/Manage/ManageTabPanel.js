@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MangaeTabs({ data }) {
+export default function ManageTabPanel({ data }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
