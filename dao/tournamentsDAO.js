@@ -55,4 +55,24 @@ export default class TournamentsDAO {
       .find({ createdBy: userId }, { projection: { participants: 0 } })
       .toArray();
   };
+
+  static addParticipant = async (tournamentId, userId) => {
+    const { db } = await connectToDatabase();
+    return db
+      .collection("tournaments")
+      .updateOne(
+        { _id: new ObjectId(tournamentId) },
+        { $set: { $push: userId } }
+      );
+  };
+
+  static removeParticipant = async (tournamentId, userId) => {
+    const { db } = await connectToDatabase();
+    return db
+      .collection("tournaments")
+      .updateOne(
+        { _id: new ObjectId(tournamentId) },
+        { $set: { $pull: userId } }
+      );
+  };
 }

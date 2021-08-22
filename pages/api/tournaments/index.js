@@ -1,4 +1,4 @@
-import TournamentsDAO from "../../dao/tournamentsDAO";
+import TournamentsDAO from "../../../dao/tournamentsDAO";
 import { getSession, withApiAuthRequired } from "@auth0/nextjs-auth0";
 
 export default withApiAuthRequired(async (req, res) => {
