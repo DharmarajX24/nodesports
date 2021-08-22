@@ -7,6 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Overview from "./Overview";
+import Edit from "./Edit";
 function ManageTabs(props) {
   const { children, value, index, ...other } = props;
 
@@ -76,7 +77,7 @@ export default function ManageTabPanel({ data }) {
         </div>
       </ManageTabs>
       <ManageTabs value={value} index={1}>
-        Edit tab
+        <Edit data={data} />
       </ManageTabs>
       <ManageTabs value={value} index={2}>
         Participants tab
