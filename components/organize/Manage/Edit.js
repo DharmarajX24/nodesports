@@ -8,17 +8,21 @@ const regions = ["ASIA", "AMERICA", "EUROPE", "AFRICA"];
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
-      margin: theme.spacing(1),
       backgroundColor: "#282C38",
-      color: "green",
+      width: '100%'
     },
   },
   textField: {
     width: 400,
+    margin: '8px',
   },
+  datePickor: {
+    margin: '8px'
+  }
 }));
 
 export default function Edit({ data }) {
+  
   const classes = useStyles();
 
   const [details, setDetails] = useState({
@@ -37,7 +41,21 @@ export default function Edit({ data }) {
     },
   });
  
-
+console.log({
+  description: data.description,
+  platform: data.platform,
+  region: data.region,
+  time: {
+    start: data.time.start,
+    end: data.time.end,
+  },
+  contact: {
+    email: data.contact.email,
+    phone: data.contact.phone,
+    twitter: data.contact.twitter,
+    discord: data.contact.discord,
+  },
+})
   function handleChange(evt) {
     const value = evt.target.value;
     setDetails({
@@ -94,6 +112,7 @@ export default function Edit({ data }) {
           <TextField
             id="standard-multiline-static"
             label="Description"
+            className={classes.textField}
             multiline
             rows={4}
             onChange={handleChange}
@@ -112,10 +131,11 @@ export default function Edit({ data }) {
 
         <div className="py-4">
           <div className="text-2xl px-2">Details</div>
-          <div className="flex">
             <TextField
               id="filled-select-currency-native"
               select
+              className={classes.textField}
+
               name="platform"
               label="platform"
               value={details.platform}
@@ -143,6 +163,8 @@ export default function Edit({ data }) {
             <TextField
               id="filled-select-currency-native"
               select
+              className={classes.textField}
+
               name="region"
               label="region"
               value={details.region}
@@ -167,15 +189,13 @@ export default function Edit({ data }) {
                 </option>
               ))}
             </TextField>
-          </div>
-          <div className="flex">
+            <div className='flex flex-col'>
             <TextField
               id="datetime-local"
-              fullWidth
               name="startDate"
+
               label="game date"
               type="datetime-local"
-              className={classes.textField}
               InputLabelProps={{
                 shrink: true,
                 style: { color: "#EB2B44" },
@@ -186,13 +206,14 @@ export default function Edit({ data }) {
               color="secondary"
               value={details.time.start}
               onChange={handleChangeTime}
+              className={classes.datePickor}
             />
             <TextField
               id="datetime-local"
               name="endDate"
               label="game date"
               type="datetime-local"
-              className={classes.textField}
+              className={classes.datePickor}
               InputLabelProps={{
                 shrink: true,
                 style: { color: "#EB2B44" },
@@ -200,12 +221,11 @@ export default function Edit({ data }) {
               InputProps={{
                 style: { color: "#fff" },
               }}
-              fullWidth
               color="secondary"
               value={details.time.end}
               onChange={handleChangeTime}
             />
-          </div>
+            </div>
         </div>
 
         <div className="flex py-4 flex-col">
@@ -221,6 +241,8 @@ export default function Edit({ data }) {
             InputProps={{
               style: { color: "#fff" },
             }}
+            className={classes.textField}
+
             value={details.contact.email}
             id="standard-basic"
             label="email"
@@ -236,6 +258,8 @@ export default function Edit({ data }) {
             InputProps={{
               style: { color: "#fff" },
             }}
+            className={classes.textField}
+
             value={details.contact.phone}
             id="standard-basic"
             label="phone"
@@ -248,6 +272,8 @@ export default function Edit({ data }) {
             InputLabelProps={{
               style: { color: "#EB2B44" },
             }}
+            className={classes.textField}
+
             value={details.contact.twitter}
             InputProps={{
               style: { color: "#fff" },
@@ -266,6 +292,7 @@ export default function Edit({ data }) {
             InputProps={{
               style: { color: "#fff" },
             }}
+            className={classes.textField}
             value={details.contact.discord}
             id="standard-basic"
             label="discord"
