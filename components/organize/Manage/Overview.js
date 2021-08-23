@@ -3,7 +3,6 @@ import Image from "next/image";
 import Hero from "../../../public/cod.png";
 
 function Overview({ data }) {
-  console.log(data.time)
   return (
     <div>
       <Image src={Hero} height="400" />
@@ -33,7 +32,7 @@ function Overview({ data }) {
         <div className="py-2 font-semibold text-2xl">Contact</div>
         <div className="text-xs text-gray-400">email, phone, twitter, discord</div>
 
-        <div className="">{data.email} | {data.phone} | {data.twitter} | {data.discord} </div>
+        <div className="">{data.contact.email} | {data.contact.phone} | {data.contact.twitter} | {data.contact.discord} </div>
 
         </div>
 
