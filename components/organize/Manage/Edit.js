@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import {getChanges} from "../../../handlers/data"
 
 const platforms = ["Xbox", "Pc", "PS4"];
 const regions = ["ASIA", "AMERICA", "EUROPE", "AFRICA"];
@@ -41,6 +42,8 @@ export default function Edit({ data }) {
   }
 
   const updateUserTournament = async () => {
+    const updatedData = getChanges({}, {})
+    // TODO: pass updateData in request body
     const res = await fetch(`/api/tournaments/${data._id}`, {
       method: "PATCH",
       body: JSON.stringify({
