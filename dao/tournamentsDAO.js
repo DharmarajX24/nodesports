@@ -22,6 +22,8 @@ export default class TournamentsDAO {
         twitter: null,
         discord: null,
       },
+      platform: null,
+      region: null,
     };
     const { insertedId } = await db
       .collection("tournaments")
