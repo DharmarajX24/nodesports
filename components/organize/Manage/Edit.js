@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { getChanges } from "../../../handlers/data";
@@ -36,6 +36,23 @@ export default function Edit({ data }) {
       discord: "",
     },
   });
+  useEffect(()=>{
+    data && setDetails({
+      description: data.description,
+      platform: data.platform,
+      region: data.region,
+      time: {
+        start: data.time.start,
+        end: data.time.end,
+      },
+      contact: {
+        email: data.contact.email,
+        phone: data.contact.phone,
+        twitter: data.contact.twitter,
+        discord: data.contact.discord,
+      },
+    })
+  },[data])
 
   function handleChange(evt) {
     const value = evt.target.value;
@@ -225,7 +242,7 @@ export default function Edit({ data }) {
             label="email"
           />
           <TextField
-            onChange={handleChange}
+            onChange={handleChangeContact}
             name="phone"
             type="tel"
             color="secondary"
@@ -240,7 +257,7 @@ export default function Edit({ data }) {
             label="phone"
           />
           <TextField
-            onChange={handleChange}
+            onChange={handleChangeContact}
             name="twitter"
             type="url"
             color="secondary"
@@ -255,7 +272,7 @@ export default function Edit({ data }) {
             label="twitter"
           />
           <TextField
-            onChange={handleChange}
+            onChange={handleChangeContact}
             name="discord"
             type="url"
             color="secondary"
