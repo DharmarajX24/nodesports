@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Edit({ data }) {
+  console.log(data.description);
   const classes = useStyles();
 
   const [details, setDetails] = useState({
@@ -40,7 +41,34 @@ export default function Edit({ data }) {
     });
   }
 
+
+
   const updateUserTournament = async () => {
+    const isContactUpdated =
+      details.email !== data.email ||
+      details.phone !== data.phone ||
+      details.twitter !== data.twitter ||
+      details.discord !== data.discord;
+
+    const patchObj = {
+      ...(details.description !== data.description && {
+        description: details.description,
+      }),
+      ...(details.platform !== data.platform && { platform: details.platform }),
+      ...(details.region !== data.region && { region: details.region }),
+      ...(details.startDate !== data.startDate && {
+        startDate: details.startDate,
+      }),
+      ...(details.endDate !== data.endDate && { endDate: details.endDate }),      
+      ...(isContactUpdated && { contact : {
+        ...(details.email !== data.email && { email: details.email }),
+        ...(details.phone !== data.phone && { phone: details.phone }),
+        ...(details.twitter !== data.twitter && { twitter: details.twitter }),
+        ...(details.discord !== data.discord && { discord: details.discord }),
+      }
+      })
+    };
+    console.log({isContactUpdated,patchObj})
     const res = await fetch(`/api/tournaments/${data._id}`, {
       method: "PATCH",
       body: JSON.stringify({
@@ -56,6 +84,8 @@ export default function Edit({ data }) {
     e.preventDefault();
     updateUserTournament();
   };
+  console.log(details.platform, data.platform,data)
+
   return (
     <form
       onSubmit={handleSubmit}
