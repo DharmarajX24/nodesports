@@ -22,37 +22,21 @@ export default function Edit({ data }) {
   const classes = useStyles();
 
   const [details, setDetails] = useState({
-    description: null,
-    platform: "Xbox",
-    region: "ASIA",
+    description: data.description,
+    platform: data.platform,
+    region: data.region,
     time: {
-      start: "2017-05-24T10:30",
-      end: "2017-05-28T10:30",
+      start: data.time.start,
+      end: data.time.end,
     },
     contact: {
-      email: "",
-      phone: "",
-      twitter: "",
-      discord: "",
+      email: data.contact.email,
+      phone: data.contact.phone,
+      twitter: data.contact.twitter,
+      discord: data.contact.discord,
     },
   });
-  useEffect(()=>{
-    data && setDetails({
-      description: data.description,
-      platform: data.platform,
-      region: data.region,
-      time: {
-        start: data.time.start,
-        end: data.time.end,
-      },
-      contact: {
-        email: data.contact.email,
-        phone: data.contact.phone,
-        twitter: data.contact.twitter,
-        discord: data.contact.discord,
-      },
-    })
-  },[data])
+ 
 
   function handleChange(evt) {
     const value = evt.target.value;
