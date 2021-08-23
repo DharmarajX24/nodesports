@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import {getChanges} from "../../../handlers/data"
+import { getChanges } from "../../../handlers/data";
 
 const platforms = ["Xbox", "Pc", "PS4"];
 const regions = ["ASIA", "AMERICA", "EUROPE", "AFRICA"];
@@ -22,15 +22,19 @@ export default function Edit({ data }) {
   const classes = useStyles();
 
   const [details, setDetails] = useState({
-    description: "",
+    description: null,
     platform: "Xbox",
     region: "ASIA",
-    startDate: "2014-08-18T21:11:54",
-    endDate: "2014-08-28T21:11:54",
-    email: "",
-    phone: "",
-    twitter: "",
-    discord: "",
+    time: {
+      start: "2017-05-24T10:30",
+      end: "2017-05-28T10:30",
+    },
+    contact: {
+      email: "",
+      phone: "",
+      twitter: "",
+      discord: "",
+    },
   });
 
   function handleChange(evt) {
@@ -40,15 +44,31 @@ export default function Edit({ data }) {
       [evt.target.name]: value,
     });
   }
-
+  function handleChangeContact(evt) {
+    const value = evt.target.value;
+    setDetails({
+      ...details,
+      contact: {
+        ...details.contact,
+        [evt.target.name]: value,
+      },
+    });
+  }
+  function handleChangeTime(evt) {
+    const value = evt.target.value;
+    setDetails({
+      ...details,
+      time: {
+        ...details.time,
+        [evt.target.name]: value,
+      },
+    });
+  }
   const updateUserTournament = async () => {
-    const updatedData = getChanges({}, {})
-    // TODO: pass updateData in request body
+    const updatedData = getChanges(data, details);
     const res = await fetch(`/api/tournaments/${data._id}`, {
       method: "PATCH",
-      body: JSON.stringify({
-        description: details.description,
-      }),
+      body: JSON.stringify(updatedData),
       headers: { "Content-Type": "application/json" },
     });
     const { data: result, error } = await res.json();
@@ -163,8 +183,8 @@ export default function Edit({ data }) {
                 style: { color: "#fff" },
               }}
               color="secondary"
-              value={details.startDate}
-              onChange={handleChange}
+              value={details.time.start}
+              onChange={handleChangeTime}
             />
             <TextField
               id="datetime-local"
@@ -181,8 +201,8 @@ export default function Edit({ data }) {
               }}
               fullWidth
               color="secondary"
-              value={details.endDate}
-              onChange={handleChange}
+              value={details.time.end}
+              onChange={handleChangeTime}
             />
           </div>
         </div>
@@ -190,10 +210,9 @@ export default function Edit({ data }) {
         <div className="flex py-4 flex-col">
           <div className="text-2xl px-2">Contact</div>
           <TextField
-            onChange={handleChange}
+            onChange={handleChangeContact}
             type="email"
             name="email"
-            // value={details.email}
             color="secondary"
             InputLabelProps={{
               style: { color: "#EB2B44" },
@@ -201,6 +220,7 @@ export default function Edit({ data }) {
             InputProps={{
               style: { color: "#fff" },
             }}
+            value={details.contact.email}
             id="standard-basic"
             label="email"
           />
@@ -208,7 +228,6 @@ export default function Edit({ data }) {
             onChange={handleChange}
             name="phone"
             type="tel"
-            // value={details.phone}
             color="secondary"
             InputLabelProps={{
               style: { color: "#EB2B44" },
@@ -216,6 +235,7 @@ export default function Edit({ data }) {
             InputProps={{
               style: { color: "#fff" },
             }}
+            value={details.contact.phone}
             id="standard-basic"
             label="phone"
           />
@@ -223,11 +243,11 @@ export default function Edit({ data }) {
             onChange={handleChange}
             name="twitter"
             type="url"
-            // value={details.twitter}
             color="secondary"
             InputLabelProps={{
               style: { color: "#EB2B44" },
             }}
+            value={details.contact.twitter}
             InputProps={{
               style: { color: "#fff" },
             }}
@@ -238,7 +258,6 @@ export default function Edit({ data }) {
             onChange={handleChange}
             name="discord"
             type="url"
-            // value={details.discord}
             color="secondary"
             InputLabelProps={{
               style: { color: "#EB2B44" },
@@ -246,6 +265,7 @@ export default function Edit({ data }) {
             InputProps={{
               style: { color: "#fff" },
             }}
+            value={details.contact.discord}
             id="standard-basic"
             label="discord"
           />
