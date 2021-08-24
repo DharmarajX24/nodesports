@@ -1,5 +1,5 @@
-import BrowseComp from "../components/browse/BrowseComp";
-import { connectToDatabase } from "../lib/mongodb";
+import BrowseComp from "../../components/browse/BrowseComp";
+import { connectToDatabase } from "../../lib/mongodb";
 
 export const getServerSideProps = async () => {
   const { db } = await connectToDatabase();
