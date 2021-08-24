@@ -44,7 +44,7 @@ function NavBar() {
             </button>
             {showMenu && (
               <div
-                className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-secondary ring-1 ring-black ring-opacity-5 focus:outline-none"
+                className="origin-top-right absolute z-20 right-0 mt-2 w-56 rounded-md shadow-lg bg-secondary ring-1 ring-black ring-opacity-5 focus:outline-none"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
