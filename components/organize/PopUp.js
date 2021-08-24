@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { games } from "../../data/games";
+import Button from "@material-ui/core/Button";
+import IconButton from '@material-ui/core/IconButton';
 
 function PopUp({ closePopUp, createUserTournament }) {
   const [game, setGame] = useState("COD");
@@ -16,7 +18,7 @@ function PopUp({ closePopUp, createUserTournament }) {
   return (
     <div className="fixed flex flex-row justify-center inset-0 z-10 items-center ">
       <div className="max-w-2xl  bg-secondary  w-full flex flex-col ">
-        <button onClick={() => closePopUp()} className="self-end mr-4 mt-4">
+        <IconButton className="self-end mr-4 mt-4" onClick={() => closePopUp()} aria-label="close pop up">
           <svg
             width="24"
             height="24"
@@ -29,7 +31,7 @@ function PopUp({ closePopUp, createUserTournament }) {
               fill="#EB2B44"
             />
           </svg>
-        </button>
+          </IconButton>
         <form className="p-4">
           <TextField
             required
@@ -39,10 +41,10 @@ function PopUp({ closePopUp, createUserTournament }) {
             value={name}
             onChange={handleNameChange}
             variant="filled"
-            InputLabelProps={{
-              style: { color: "#EB2B44" },
-            }}
             InputProps={{
+              style: { color: "#1380F0" },
+            }}
+            InputLabelProps={{
               style: { color: "#fff" },
             }}
           />
@@ -60,15 +62,18 @@ function PopUp({ closePopUp, createUserTournament }) {
             helperText="Please select your game"
             variant="filled"
             InputLabelProps={{
-              style: { color: "#EB2B44" },
+              style: { color: "#fff" },
             }}
             InputProps={{
+              style: { color: "#1380F0" },
+            }}
+            FormHelperTextProps={{
               style: { color: "#fff" },
             }}
           >
             {games.map((option) => (
               <option
-                className="text-branding"
+                className="text-secondarybranding"
                 key={option.image}
                 value={option.name}
               >
@@ -78,18 +83,13 @@ function PopUp({ closePopUp, createUserTournament }) {
           </TextField>
 
           <div className="flex justify-end">
-            <button
-              onClick={() => closePopUp()}
-              className="px-6 py-1 rounded  "
-            >
-              Cancel
-            </button>
-            <button
+            <Button
               onClick={(e) => createUserTournament(e, name, game)}
-              className="bg-secondarybranding px-6 py-1 rounded ml-3  hover:text-secondarybranding hover:bg-white "
+              variant="contained"
+              color="secondary"
             >
               Create
-            </button>
+            </Button>
           </div>
         </form>
       </div>
