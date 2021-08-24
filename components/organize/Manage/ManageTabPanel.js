@@ -63,8 +63,8 @@ export default function ManageTabPanel({ data }) {
         <Tabs
           value={value}
           onChange={handleChange}
+          indicatorColor="secondary"
           aria-label="simple tabs example"
-          className="bg-primary"
         >
           <Tab label="Overview" {...a11yProps(0)} />
           <Tab label="Edit" {...a11yProps(1)} />
