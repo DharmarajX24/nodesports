@@ -1,3 +1,4 @@
+import BrowseComp from "../components/browse/BrowseComp";
 import { connectToDatabase } from "../lib/mongodb";
 
 export const getServerSideProps = async () => {
@@ -17,5 +18,5 @@ export const getServerSideProps = async () => {
 
 export default function Browse({ data }) {
   console.log(data);
-  return <p>Browse</p>;
+  return <BrowseComp data={data} />;
 }

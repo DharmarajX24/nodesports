@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { games } from "../../data/games";
 import Button from "@material-ui/core/Button";
-import IconButton from '@material-ui/core/IconButton';
+import IconButton from "@material-ui/core/IconButton";
 
 function PopUp({ closePopUp, createUserTournament }) {
   const [game, setGame] = useState("COD");
@@ -18,7 +18,11 @@ function PopUp({ closePopUp, createUserTournament }) {
   return (
     <div className="fixed flex flex-row justify-center inset-0 z-10 items-center ">
       <div className="max-w-2xl  bg-secondary  w-full flex flex-col ">
-        <IconButton className="self-end mr-4 mt-4" onClick={() => closePopUp()} aria-label="close pop up">
+        <IconButton
+          className="self-end mr-4 mt-4"
+          onClick={() => closePopUp()}
+          aria-label="close pop up"
+        >
           <svg
             width="24"
             height="24"
@@ -31,7 +35,7 @@ function PopUp({ closePopUp, createUserTournament }) {
               fill="#EB2B44"
             />
           </svg>
-          </IconButton>
+        </IconButton>
         <form className="p-4">
           <TextField
             required
