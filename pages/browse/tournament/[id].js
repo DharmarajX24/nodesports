@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { connectToDatabase } from "../../../lib/mongodb";
 import { ObjectId } from "mongodb";
+import TournamentDetails from "../../../components/browse/TournamentDetails";
 
 export const getServerSideProps = async (context) => {
   const { id } = context.query;
@@ -24,5 +25,5 @@ export default function BrowseTournamentPage({ data }) {
   console.log(router.query);
   const { id } = router.query;
   console.log(data);
-  return <div className="py-10">{}</div>;
+  return <TournamentDetails data={data}/>
 }
