@@ -5,9 +5,10 @@ import Avatar from "@material-ui/core/Avatar";
 
 function NavBar() {
   const { user, error, isLoading } = useUser();
+  const [showMenu, setShowMenu] = useState(false);
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
-  const [showMenu, setShowMenu] = useState(false);
+
 
   console.log(user);
   return (
@@ -38,8 +39,8 @@ function NavBar() {
       </ul>
       <div className="px-6">
         {user ? (
-          <div class="relative inline-block text-left">
-            <button onMouseOver={() => setShowMenu(true)} onMouseOut={() => setShowMenu(false)}>
+          <div className="relative inline-block text-left">
+            <button onClick={() => setShowMenu(!showMenu)}>
               <Avatar alt="Cindy Baker" src={user.picture} />
             </button>
             {showMenu && (
@@ -48,14 +49,14 @@ function NavBar() {
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
-                tabindex="-1"
+                tabIndex="-1"
               >
-                <div class="py-1" role="none">
+                <div className="py-1" role="none">
                   <div className="text-white block px-4 py-2 text-sm hover:text-secondarybranding">
                     Profile
                   </div>
                 </div>
-                <div class="py-1" role="none">
+                <div className="py-1" role="none">
                   <Link href="/api/auth/logout">
                     <a className="text-white block px-4 py-2 text-sm hover:text-secondarybranding">Logout</a>
                   </Link>
