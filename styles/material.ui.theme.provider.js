@@ -1,14 +1,20 @@
 import { createTheme } from "@material-ui/core/styles";
 
-const MaterialUiTheme = createTheme({
+const theme = createTheme({
   palette: {
     primary: {
-      main: "#C54582",
+      main: "#151B27",
     },
     secondary: {
-      main: "#F4DCF4",
+      main: "#282C38",
+    },
+    branding: {
+      main: "#EB2B44",
+    },
+    secondarybranding: {
+      main: "#1380F0"
     },
   },
 });
 
-export default MaterialUiTheme;
+export default theme;
