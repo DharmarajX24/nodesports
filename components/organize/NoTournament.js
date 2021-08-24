@@ -1,5 +1,6 @@
 import React from "react";
 import PopUp from "./PopUp";
+import Button from "@material-ui/core/Button";
 
 function NoTournament({ createUserTournament, handlePopup, showPopUp }) {
   return (
@@ -7,12 +8,13 @@ function NoTournament({ createUserTournament, handlePopup, showPopUp }) {
       <div className="text-3xl">
         You dont have any active tournament going on
       </div>
-      <button
+      <Button
         onClick={() => handlePopup()}
-        className="bg-secondarybranding font-medium mt-6 px-6 py-2 rounded hover:bg-white hover:text-secondarybranding hover:border-branding hover:border-2 hover:border-solid"
+        variant="contained"
+        color="secondary"
       >
-        Create tournament
-      </button>
+        Create Tournament
+      </Button>
       {showPopUp ? (
         <>
           <PopUp

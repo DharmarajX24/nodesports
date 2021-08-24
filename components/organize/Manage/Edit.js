@@ -5,7 +5,7 @@ import { getChanges } from "../../../handlers/data";
 
 const platforms = ["Xbox", "Pc", "PS4"];
 const regions = ["ASIA", "AMERICA", "EUROPE", "AFRICA"];
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     "& .MuiTextField-root": {
       backgroundColor: "#282C38",
