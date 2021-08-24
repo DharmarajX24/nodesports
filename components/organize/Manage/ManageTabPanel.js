@@ -66,19 +66,18 @@ export default function ManageTabPanel({ data }) {
           aria-label="simple tabs example"
           className="bg-primary"
         >
-          <Tab label="Edit" {...a11yProps(0)} />
-          <Tab label="Overview" {...a11yProps(1)} />
+          <Tab label="Overview" {...a11yProps(0)} />
+          <Tab label="Edit" {...a11yProps(1)} />
           <Tab label="Participants" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <ManageTabs value={value} index={0}>
-        <div className="pt-16">
-        <Edit data={data} />
-        </div>
+        <Overview data={data} />
       </ManageTabs>
       <ManageTabs value={value} index={1}>
-      <Overview data={data} />
-
+        <div className="pt-16">
+          <Edit data={data} />
+        </div>
       </ManageTabs>
       <ManageTabs value={value} index={2}>
         Participants tab

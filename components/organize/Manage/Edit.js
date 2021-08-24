@@ -9,20 +9,19 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
       backgroundColor: "#282C38",
-      width: '100%'
+      width: "100%",
     },
   },
   textField: {
     width: 400,
-    margin: '8px',
+    margin: "8px",
   },
   datePickor: {
-    margin: '8px'
-  }
+    margin: "8px",
+  },
 }));
 
 export default function Edit({ data }) {
-  
   const classes = useStyles();
 
   const [details, setDetails] = useState({
@@ -40,22 +39,22 @@ export default function Edit({ data }) {
       discord: data.contact.discord,
     },
   });
- 
-console.log({
-  description: data.description,
-  platform: data.platform,
-  region: data.region,
-  time: {
-    start: data.time.start,
-    end: data.time.end,
-  },
-  contact: {
-    email: data.contact.email,
-    phone: data.contact.phone,
-    twitter: data.contact.twitter,
-    discord: data.contact.discord,
-  },
-})
+
+  console.log({
+    description: data.description,
+    platform: data.platform,
+    region: data.region,
+    time: {
+      start: data.time.start,
+      end: data.time.end,
+    },
+    contact: {
+      email: data.contact.email,
+      phone: data.contact.phone,
+      twitter: data.contact.twitter,
+      discord: data.contact.discord,
+    },
+  });
   function handleChange(evt) {
     const value = evt.target.value;
     setDetails({
@@ -131,69 +130,66 @@ console.log({
 
         <div className="py-4">
           <div className="text-2xl px-2">Details</div>
-            <TextField
-              id="filled-select-currency-native"
-              select
-              className={classes.textField}
-
-              name="platform"
-              label="platform"
-              value={details.platform}
-              onChange={handleChange}
-              SelectProps={{
-                native: true,
-              }}
-              InputLabelProps={{
-                style: { color: "#EB2B44" },
-              }}
-              InputProps={{
-                style: { color: "#fff" },
-              }}
-              color="secondary"
-              fullWidth
-              // helperText="Please select your gaming platform"
-              variant="filled"
-            >
-              {platforms.map((option) => (
-                <option key={option} className="text-branding" value={option}>
-                  {option}
-                </option>
-              ))}
-            </TextField>
-            <TextField
-              id="filled-select-currency-native"
-              select
-              className={classes.textField}
-
-              name="region"
-              label="region"
-              value={details.region}
-              onChange={handleChange}
-              SelectProps={{
-                native: true,
-              }}
-              color="secondary"
-              fullWidth
-              helperText="Please select your gaming region"
-              variant="filled"
-              InputLabelProps={{
-                style: { color: "#EB2B44" },
-              }}
-              InputProps={{
-                style: { color: "#fff" },
-              }}
-            >
-              {regions.map((option) => (
-                <option key={option} className="text-branding" value={option}>
-                  {option}
-                </option>
-              ))}
-            </TextField>
-            <div className='flex flex-col'>
+          <TextField
+            id="filled-select-currency-native"
+            select
+            className={classes.textField}
+            name="platform"
+            label="platform"
+            value={details.platform}
+            onChange={handleChange}
+            SelectProps={{
+              native: true,
+            }}
+            InputLabelProps={{
+              style: { color: "#EB2B44" },
+            }}
+            InputProps={{
+              style: { color: "#fff" },
+            }}
+            color="secondary"
+            fullWidth
+            // helperText="Please select your gaming platform"
+            variant="filled"
+          >
+            {platforms.map((option) => (
+              <option key={option} className="text-branding" value={option}>
+                {option}
+              </option>
+            ))}
+          </TextField>
+          <TextField
+            id="filled-select-currency-native"
+            select
+            className={classes.textField}
+            name="region"
+            label="region"
+            value={details.region}
+            onChange={handleChange}
+            SelectProps={{
+              native: true,
+            }}
+            color="secondary"
+            fullWidth
+            helperText="Please select your gaming region"
+            variant="filled"
+            InputLabelProps={{
+              style: { color: "#EB2B44" },
+            }}
+            InputProps={{
+              style: { color: "#fff" },
+            }}
+          >
+            {regions.map((option) => (
+              <option key={option} className="text-branding" value={option}>
+                {option}
+              </option>
+            ))}
+          </TextField>
+          <div className="flex flex-col">
             <TextField
               id="datetime-local"
               name="startDate"
-
               label="game date"
               type="datetime-local"
               InputLabelProps={{
@@ -225,7 +221,7 @@ console.log({
               value={details.time.end}
               onChange={handleChangeTime}
             />
-            </div>
+          </div>
         </div>
 
         <div className="flex py-4 flex-col">
@@ -242,7 +238,6 @@ console.log({
               style: { color: "#fff" },
             }}
             className={classes.textField}
-
             value={details.contact.email}
             id="standard-basic"
             label="email"
@@ -259,7 +254,6 @@ console.log({
               style: { color: "#fff" },
             }}
             className={classes.textField}
-
             value={details.contact.phone}
             id="standard-basic"
             label="phone"
@@ -273,7 +267,6 @@ console.log({
               style: { color: "#EB2B44" },
             }}
             className={classes.textField}
-
             value={details.contact.twitter}
             InputProps={{
               style: { color: "#fff" },
