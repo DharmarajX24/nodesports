@@ -39,22 +39,6 @@ export default function Edit({ data }) {
       discord: data.contact.discord,
     },
   });
-
-  console.log({
-    description: data.description,
-    platform: data.platform,
-    region: data.region,
-    time: {
-      start: data.time.start,
-      end: data.time.end,
-    },
-    contact: {
-      email: data.contact.email,
-      phone: data.contact.phone,
-      twitter: data.contact.twitter,
-      discord: data.contact.discord,
-    },
-  });
   function handleChange(evt) {
     const value = evt.target.value;
     setDetails({
@@ -119,10 +103,10 @@ export default function Edit({ data }) {
             value={details.description}
             color="secondary"
             InputLabelProps={{
-              style: { color: "#EB2B44" },
+              style: { color: "#fff" },
             }}
             InputProps={{
-              style: { color: "#fff" },
+              style: { color: "#1380F0" },
             }}
             fullWidth
           />
@@ -142,10 +126,10 @@ export default function Edit({ data }) {
               native: true,
             }}
             InputLabelProps={{
-              style: { color: "#EB2B44" },
+              style: { color: "#fff" },
             }}
             InputProps={{
-              style: { color: "#fff" },
+              style: { color: "#1380F0" },
             }}
             color="secondary"
             fullWidth
@@ -153,7 +137,7 @@ export default function Edit({ data }) {
             variant="filled"
           >
             {platforms.map((option) => (
-              <option key={option} className="text-branding" value={option}>
+              <option key={option} className="text-secondarybranding" value={option}>
                 {option}
               </option>
             ))}
@@ -174,14 +158,17 @@ export default function Edit({ data }) {
             helperText="Please select your gaming region"
             variant="filled"
             InputLabelProps={{
-              style: { color: "#EB2B44" },
+              style: { color: "#fff" },
             }}
             InputProps={{
+              style: { color: "#1380F0" },
+            }}
+            FormHelperTextProps={{
               style: { color: "#fff" },
             }}
           >
             {regions.map((option) => (
-              <option key={option} className="text-branding" value={option}>
+              <option key={option} className="text-secondarybranding" value={option}>
                 {option}
               </option>
             ))}
@@ -192,12 +179,13 @@ export default function Edit({ data }) {
               name="startDate"
               label="game date"
               type="datetime-local"
+           
               InputLabelProps={{
                 shrink: true,
-                style: { color: "#EB2B44" },
+                style: { color: "#fff" },
               }}
               InputProps={{
-                style: { color: "#fff" },
+                style: { color: "#1380F0" },
               }}
               color="secondary"
               value={details.time.start}
@@ -212,10 +200,10 @@ export default function Edit({ data }) {
               className={classes.datePickor}
               InputLabelProps={{
                 shrink: true,
-                style: { color: "#EB2B44" },
+                style: { color: "#fff" },
               }}
               InputProps={{
-                style: { color: "#fff" },
+                style: { color: "#1380F0" },
               }}
               color="secondary"
               value={details.time.end}
@@ -232,10 +220,10 @@ export default function Edit({ data }) {
             name="email"
             color="secondary"
             InputLabelProps={{
-              style: { color: "#EB2B44" },
+              style: { color: "#fff" },
             }}
             InputProps={{
-              style: { color: "#fff" },
+              style: { color: "#1380F0" },
             }}
             className={classes.textField}
             value={details.contact.email}
@@ -248,10 +236,10 @@ export default function Edit({ data }) {
             type="tel"
             color="secondary"
             InputLabelProps={{
-              style: { color: "#EB2B44" },
+              style: { color: "#fff" },
             }}
             InputProps={{
-              style: { color: "#fff" },
+              style: { color: "#1380F0" },
             }}
             className={classes.textField}
             value={details.contact.phone}
@@ -264,13 +252,14 @@ export default function Edit({ data }) {
             type="url"
             color="secondary"
             InputLabelProps={{
-              style: { color: "#EB2B44" },
+              style: { color: "#fff" },
+            }}
+            InputProps={{
+              style: { color: "#1380F0" },
             }}
             className={classes.textField}
             value={details.contact.twitter}
-            InputProps={{
-              style: { color: "#fff" },
-            }}
+          
             id="standard-basic"
             label="twitter"
           />
@@ -280,10 +269,10 @@ export default function Edit({ data }) {
             type="url"
             color="secondary"
             InputLabelProps={{
-              style: { color: "#EB2B44" },
+              style: { color: "#fff" },
             }}
             InputProps={{
-              style: { color: "#fff" },
+              style: { color: "#1380F0" },
             }}
             className={classes.textField}
             value={details.contact.discord}
