@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { getChanges } from "../../../handlers/data";
+import Button from "@material-ui/core/Button";
 
 const platforms = ["Xbox", "Pc", "PS4"];
 const regions = ["ASIA", "AMERICA", "EUROPE", "AFRICA"];
@@ -137,7 +138,11 @@ export default function Edit({ data }) {
             variant="filled"
           >
             {platforms.map((option) => (
-              <option key={option} className="text-secondarybranding" value={option}>
+              <option
+                key={option}
+                className="text-secondarybranding"
+                value={option}
+              >
                 {option}
               </option>
             ))}
@@ -168,7 +173,11 @@ export default function Edit({ data }) {
             }}
           >
             {regions.map((option) => (
-              <option key={option} className="text-secondarybranding" value={option}>
+              <option
+                key={option}
+                className="text-secondarybranding"
+                value={option}
+              >
                 {option}
               </option>
             ))}
@@ -179,7 +188,6 @@ export default function Edit({ data }) {
               name="startDate"
               label="game date"
               type="datetime-local"
-           
               InputLabelProps={{
                 shrink: true,
                 style: { color: "#fff" },
@@ -259,7 +267,6 @@ export default function Edit({ data }) {
             }}
             className={classes.textField}
             value={details.contact.twitter}
-          
             id="standard-basic"
             label="twitter"
           />
@@ -282,12 +289,9 @@ export default function Edit({ data }) {
         </div>
 
         <div className="p-2 flex justify-end">
-          <button
-            className="p-2 rounded bg-secondarybranding hover:text-secondarybranding hover:bg-white"
-            type="submit"
-          >
+          <Button type="submit" variant="contained" color="secondary">
             Update
-          </button>
+          </Button>
         </div>
       </div>
     </form>

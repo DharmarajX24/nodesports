@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
 import Avatar from "@material-ui/core/Avatar";
+import { useRouter } from "next/router";
 
 function NavBar() {
   const { user, error, isLoading } = useUser();
+  const router = useRouter();
   const [showMenu, setShowMenu] = useState(false);
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
-  console.log(user);
   return (
     <nav className="px-10 py-2 flex items-baseline justify-between">
       <ul className="flex items-baseline">
@@ -23,14 +24,22 @@ function NavBar() {
         </li>
         <li className="px-10">
           <Link href="/browse">
-            <a className="text-xl font-bold text-greytext hover:text-branding ">
+            <a
+              className={`text-xl font-bold text-greytext hover:text-secondarybranding ${
+                router.pathname === "/browse" && "underline"
+              }`}
+            >
               Browse
             </a>
           </Link>
         </li>
         <li className="px-10">
           <Link href="/organize">
-            <a className="text-xl font-bold text-greytext hover:text-branding ">
+            <a
+              className={`text-xl font-bold text-greytext hover:text-secondarybranding ${
+                router.pathname === "/organize" && "underline"
+              }`}
+            >
               Organize
             </a>
           </Link>
