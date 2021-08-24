@@ -63,7 +63,7 @@ export default function ManageTabPanel({ data }) {
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="secondary"
+          className="bg-primary"
           aria-label="simple tabs example"
         >
           <Tab label="Overview" {...a11yProps(0)} />
@@ -75,9 +75,7 @@ export default function ManageTabPanel({ data }) {
         <Overview data={data} />
       </ManageTabs>
       <ManageTabs value={value} index={1}>
-        <div className="pt-16">
-          <Edit data={data} />
-        </div>
+        <Edit data={data} />
       </ManageTabs>
       <ManageTabs value={value} index={2}>
         Participants tab

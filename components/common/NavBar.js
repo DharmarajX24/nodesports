@@ -9,7 +9,6 @@ function NavBar() {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
-
   console.log(user);
   return (
     <nav className="px-10 py-2 flex items-baseline justify-between">
@@ -58,7 +57,9 @@ function NavBar() {
                 </div>
                 <div className="py-1" role="none">
                   <Link href="/api/auth/logout">
-                    <a className="text-white block px-4 py-2 text-sm hover:text-secondarybranding">Logout</a>
+                    <a className="text-white block px-4 py-2 text-sm hover:text-secondarybranding">
+                      Logout
+                    </a>
                   </Link>
                 </div>
               </div>
