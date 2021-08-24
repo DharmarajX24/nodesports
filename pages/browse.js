@@ -1,7 +1,21 @@
-import React from "react";
+import { connectToDatabase } from "../lib/mongodb";
 
-function Browse() {
-  return <div>browse page</div>;
+export const getServerSideProps = async () => {
+  const { db } = await connectToDatabase();
+  const data = await db
+    .collection("tournaments")
+    .find({})
+    .project({ createdBy: 0 })
+    .sort({ createdAt: -1 })
+    .limit(20)
+    .toArray();
+  console.log(data);
+
+  if (!data) return { notFound: true };
+  return { props: { data: JSON.parse(JSON.stringify(data)) } };
+};
+
+export default function Browse({ data }) {
+  console.log(data);
+  return <p>Browse</p>;
 }
-
-export default Browse;
