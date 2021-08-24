@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
+import Avatar from "@material-ui/core/Avatar";
 
 function NavBar() {
   const { user, error, isLoading } = useUser();
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
+  const [showMenu, setShowMenu] = useState(false);
 
+  console.log(user);
   return (
     <nav className="px-10 py-2 flex items-baseline justify-between">
       <ul className="flex items-baseline">
@@ -35,17 +38,34 @@ function NavBar() {
       </ul>
       <div className="px-6">
         {user ? (
-          <div>
-            Welcome {user.name}!
-            <Link href="/api/auth/logout">
-              <a className="bg-branding font-medium  px-6 py-1 rounded hover:bg-white hover:text-branding hover:border-branding hover:border-2 hover:border-solid">
-                Logout
-              </a>
-            </Link>
+          <div class="relative inline-block text-left">
+            <button onMouseOver={() => setShowMenu(true)} onMouseOut={() => setShowMenu(false)}>
+              <Avatar alt="Cindy Baker" src={user.picture} />
+            </button>
+            {showMenu && (
+              <div
+                className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-secondary ring-1 ring-black ring-opacity-5 focus:outline-none"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="menu-button"
+                tabindex="-1"
+              >
+                <div class="py-1" role="none">
+                  <div className="text-white block px-4 py-2 text-sm hover:text-secondarybranding">
+                    Profile
+                  </div>
+                </div>
+                <div class="py-1" role="none">
+                  <Link href="/api/auth/logout">
+                    <a className="text-white block px-4 py-2 text-sm hover:text-secondarybranding">Logout</a>
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           <Link href="/api/auth/login">
-            <a className="bg-branding font-medium  px-6 py-1 rounded hover:bg-white hover:text-branding hover:border-branding hover:border-2 hover:border-solid">
+            <a className="bg-secondarybranding font-medium  px-6 py-1 rounded hover:bg-white hover:text-secondarybranding hover:border-branding hover:border-2 hover:border-solid">
               Login
             </a>
           </Link>
