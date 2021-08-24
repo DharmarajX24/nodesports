@@ -3,14 +3,14 @@ import { connectToDatabase } from "../../../lib/mongodb";
 import { ObjectId } from "mongodb";
 
 export const getServerSideProps = async (context) => {
-  const { tournamentId } = context.query;
+  const { id } = context.query;
 
   const { db } = await connectToDatabase();
 
   const data = await db
     .collection("tournaments")
     .findOne(
-      { _id: new ObjectId(tournamentId) },
+      { _id: new ObjectId(id) },
       { projection: { createdBy: 0 } }
     );
 
