@@ -10,10 +10,7 @@ export const getServerSideProps = async (context) => {
 
   const data = await db
     .collection("tournaments")
-    .findOne(
-      { _id: new ObjectId(id) },
-      { projection: { createdBy: 0 } }
-    );
+    .findOne({ _id: new ObjectId(id) }, { projection: { createdBy: 0 } });
 
   if (!data) return { notFound: true };
   // Pass data to the page via props
@@ -25,5 +22,5 @@ export default function BrowseTournamentPage({ data }) {
   console.log(router.query);
   const { id } = router.query;
   console.log(data);
-  return <TournamentDetails data={data}/>
+  return <TournamentDetails data={data} />;
 }
