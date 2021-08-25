@@ -36,11 +36,9 @@ export default withApiAuthRequired(async (req, res) => {
             break;
           case "DELETE":
             await TournamentsDAO.removeParticipant(slug[0], userId);
-            return res
-              .status(200)
-              .json({
-                data: `User ${userId} removed from tournament ${slug[0]}`,
-              });
+            return res.status(200).json({
+              data: `User ${userId} removed from tournament ${slug[0]}`,
+            });
             break;
           default:
             break;

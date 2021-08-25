@@ -5,7 +5,7 @@ import Link from "next/link";
 
 function TournamentCards({ data, baseRoute }) {
   return (
-    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10 px-4">
+    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  px-4">
       {data.map((item) => (
         <Link href={`/${baseRoute}/tournament/${item._id}`} key={item._id}>
           <a className="bg-secondary p-4 hover:shadow-game">
