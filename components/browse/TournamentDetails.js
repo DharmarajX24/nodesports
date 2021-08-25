@@ -14,7 +14,7 @@ function TournamentDetails({ data }) {
             router.push("/api/auth/login")
             return 
         }
-        const res = await fetch(`/api/tournaments/${data._id}/partcipants`,{
+        const res = await fetch(`/api/tournaments/${data._id}/participants`,{
             method: "POST",
         })
         const { data: result, error } = await res.json();
