@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import TournamentCards from "../common/TournamentCards";
 
 function Tournament({ createUserTournament, handlePopup, showPopUp, data }) {
-  console.log({data})
+  console.log({ data });
   return (
     <div className="max-w-6xl mx-auto">
       <div className="grid grid-cols-searchBarAndBtnColums auto-rows-searchBarAndBtnRows gap-4 px-4">
@@ -25,7 +25,7 @@ function Tournament({ createUserTournament, handlePopup, showPopUp, data }) {
           Create Tournament
         </Button>
       </div>
-      <TournamentCards data={data} baseRoute='organize'/>
+      <TournamentCards data={data} baseRoute="organize" />
       {showPopUp ? (
         <>
           <PopUp
