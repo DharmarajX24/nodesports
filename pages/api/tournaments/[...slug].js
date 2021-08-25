@@ -28,9 +28,11 @@ export default withApiAuthRequired(async (req, res) => {
         switch (method) {
           case "POST":
             await TournamentsDAO.addParticipant(slug[0], userId);
+            return res.status(200).json({data: `User ${userId} added to tournament ${slug[0]}`})
             break;
           case "DELETE":
             await TournamentsDAO.removeParticipant(slug[0], userId);
+            return res.status(200).json({data: `User ${userId} removed from tournament ${slug[0]}`})
             break;
           default:
             break;
