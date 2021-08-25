@@ -64,7 +64,7 @@ export default class TournamentsDAO {
       .collection("tournaments")
       .updateOne(
         { _id: new ObjectId(tournamentId) },
-        { $set: { $push: userId } }
+        { $push: { participants: userId } }
       );
   };
 
@@ -74,7 +74,7 @@ export default class TournamentsDAO {
       .collection("tournaments")
       .updateOne(
         { _id: new ObjectId(tournamentId) },
-        { $set: { $pull: userId } }
+        { $pull: { participants: userId } }
       );
   };
 }
