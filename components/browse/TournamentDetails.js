@@ -19,17 +19,35 @@ function TournamentDetails({ data }) {
     const { data: result, error } = await res.json();
     console.log(result);
   };
+  const leaveTournament = async () => {
+    console.log('leave tournament called')
+    const res = await fetch(`/api/tournaments/${data._id}/participants`, {
+      method: "DELETE",
+    });
+    const { data: result, error } = await res.json();
+    console.log(result); 
+  }
 
   return (
     <div className="max-w-4xl mx-auto py-20">
       <div className="flex justify-end pb-4">
-        <Button
-          onClick={() => joinTournament()}
-          variant="contained"
-          color="secondary"
-        >
-          {data.isParticipant ? "Leave Tournament" : "Join Tournament"}
-        </Button>
+      {data.isParticipant ? (
+          <Button
+            onClick={() => leaveTournament()}
+            variant="contained"
+            color="primary"
+          >
+            Leave Tournament
+          </Button>
+        ) : (
+          <Button
+            onClick={() => joinTournament()}
+            variant="contained"
+            color="secondary"
+          >
+            Join Tournament
+          </Button>
+        )}
       </div>
       <div className="mx-auto">
         <Overview data={data} />
