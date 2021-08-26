@@ -28,7 +28,7 @@ function TournamentDetails({ data }) {
           variant="contained"
           color="secondary"
         >
-          Join Tournament
+          {data.isParticipant ? "Leave Tournament" : "Join Tournament"}
         </Button>
       </div>
       <div className="mx-auto">
