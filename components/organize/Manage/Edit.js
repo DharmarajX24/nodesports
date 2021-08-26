@@ -24,7 +24,6 @@ const useStyles = makeStyles(() => ({
 
 export default function Edit({ data }) {
   const classes = useStyles();
-
   const [details, setDetails] = useState({
     description: data.description,
     platform: data.platform,
@@ -40,17 +39,20 @@ export default function Edit({ data }) {
       discord: data.contact.discord,
     },
   });
+
+  const materialUiDate = {
+    start: new Date (new Date(details.time.start).toString()).toISOString().split('.')[0].slice(0,-3),
+    end: new Date (new Date(details.time.end).toString()).toISOString().split('.')[0].slice(0,-3),
+  }
+
   function handleChange(evt) {
     const value = evt.target.value;
     setDetails({
       ...details,
       [evt.target.name]: value,
     });
-    console.log({
-      ...details,
-      [evt.target.name]: value,
-    });
   }
+
   function handleChangeContact(evt) {
     const value = evt.target.value;
     setDetails({
@@ -63,28 +65,15 @@ export default function Edit({ data }) {
   }
   function handleChangeTime(evt) {
     const value = evt.target.value;
-    /*setDetails({
+    const unixTimeStamp = new Date(value+':00').getTime()
+    setDetails({
       ...details,
       time: {
         ...details.time,
-        [evt.target.name]: value,
+        [evt.target.name]: unixTimeStamp,
       },
-    });*/
-    //console.log(value+':00')  //2021-08-08T21:48
-
-    const unix = new Date(value + ":00").getTime();
-    console.log({ unix });
-    console.log(Date.now());
-    const convertBack = new Date(unix).toString();
-    console.log({ convertBack });
-    const convertBackMaterialUi = new Date(convertBack)
-      .toISOString()
-      .split(".")[0]
-      .slice(0, -3);
-
-    console.log({ convertBackMaterialUi });
+    });
   }
-
   const updateUserTournament = async () => {
     const updatedData = getChanges(data, details);
     const res = await fetch(`/api/tournaments/${data._id}`, {
@@ -214,7 +203,7 @@ export default function Edit({ data }) {
                 style: { color: "#1380F0" },
               }}
               color="secondary"
-              //value={details.time.start}
+              value={materialUiDate.start}
               onChange={handleChangeTime}
               className={classes.datePickor}
             />
@@ -232,7 +221,7 @@ export default function Edit({ data }) {
                 style: { color: "#1380F0" },
               }}
               color="secondary"
-              value={details.time.end}
+              value={materialUiDate.end}
               onChange={handleChangeTime}
             />
           </div>
