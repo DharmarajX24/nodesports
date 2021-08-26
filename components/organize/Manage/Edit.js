@@ -49,7 +49,7 @@ export default function Edit({ data }) {
     console.log({
       ...details,
       [evt.target.name]: value,
-    })
+    });
   }
   function handleChangeContact(evt) {
     const value = evt.target.value;
@@ -72,14 +72,17 @@ export default function Edit({ data }) {
     });*/
     //console.log(value+':00')  //2021-08-08T21:48
 
-    const unix = new Date(value+':00').getTime()
-    console.log({unix})
-    console.log(Date.now())
-    const convertBack = new Date(unix).toString()
-    console.log({convertBack})
-    const convertBackMaterialUi = new Date(convertBack).toISOString().split('.')[0].slice(0,-3)
+    const unix = new Date(value + ":00").getTime();
+    console.log({ unix });
+    console.log(Date.now());
+    const convertBack = new Date(unix).toString();
+    console.log({ convertBack });
+    const convertBackMaterialUi = new Date(convertBack)
+      .toISOString()
+      .split(".")[0]
+      .slice(0, -3);
 
-    console.log({convertBackMaterialUi})
+    console.log({ convertBackMaterialUi });
   }
 
   const updateUserTournament = async () => {
@@ -203,7 +206,6 @@ export default function Edit({ data }) {
               name="start"
               label="game date"
               type="datetime-local"
-              
               InputLabelProps={{
                 shrink: true,
                 style: { color: "#fff" },

@@ -3,6 +3,7 @@ import { connectToDatabase } from "../lib/mongodb";
 export default class UsersDAO {
   static addUser = async (user) => {
     const { db } = await connectToDatabase();
-    return db.collection("users").insertOne(user);
+    const { id, ...rest } = user;
+    return db.collection("users").insertOne({ uid: id, ...rest });
   };
 }

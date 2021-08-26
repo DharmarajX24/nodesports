@@ -4,7 +4,6 @@ import FeaturedTournament from "./FeaturedTournament";
 import Image from "next/image";
 import Hero from "../../public/Hero.png";
 
-
 function HomeComponent({ data }) {
   return (
     <div>

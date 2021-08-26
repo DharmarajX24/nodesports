@@ -23,9 +23,7 @@ function Overview({ data }) {
         <div className="pt-6">
           <div className="text-xs text-gray-400">Date and time</div>
           <div className="">
-            {data.time.start !== 0
-              ? data.time.start 
-              : "Schedule unavailable"}
+            {data.time.start !== 0 ? data.time.start : "Schedule unavailable"}
           </div>
         </div>
       </div>
