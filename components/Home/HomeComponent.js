@@ -1,5 +1,5 @@
 import React from "react";
-import FeaturedGame from "./Featuredgame";
+import FeaturedGame from "./FeaturedGame";
 import FeaturedTournament from "./FeaturedTournament";
 import Image from "next/image";
 import Sample1 from "../../public/Sample1.png";
