@@ -24,7 +24,7 @@ function Overview({ data }) {
           <div className="text-xs text-gray-400">Date and time</div>
           <div className="">
             {data.time.start !== 0
-              ? new Date(data.createdAt).toLocaleString()
+              ? data.time.start 
               : "Schedule unavailable"}
           </div>
         </div>

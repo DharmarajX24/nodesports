@@ -46,6 +46,10 @@ export default function Edit({ data }) {
       ...details,
       [evt.target.name]: value,
     });
+    console.log({
+      ...details,
+      [evt.target.name]: value,
+    })
   }
   function handleChangeContact(evt) {
     const value = evt.target.value;
@@ -59,14 +63,25 @@ export default function Edit({ data }) {
   }
   function handleChangeTime(evt) {
     const value = evt.target.value;
-    setDetails({
+    /*setDetails({
       ...details,
       time: {
         ...details.time,
         [evt.target.name]: value,
       },
-    });
+    });*/
+    //console.log(value+':00')  //2021-08-08T21:48
+
+    const unix = new Date(value+':00').getTime()
+    console.log({unix})
+    console.log(Date.now())
+    const convertBack = new Date(unix).toString()
+    console.log({convertBack})
+    const convertBackMaterialUi = new Date(convertBack).toISOString().split('.')[0].slice(0,-3)
+
+    console.log({convertBackMaterialUi})
   }
+
   const updateUserTournament = async () => {
     const updatedData = getChanges(data, details);
     const res = await fetch(`/api/tournaments/${data._id}`, {
@@ -185,9 +200,10 @@ export default function Edit({ data }) {
           <div className="flex flex-col">
             <TextField
               id="datetime-local"
-              name="startDate"
+              name="start"
               label="game date"
               type="datetime-local"
+              
               InputLabelProps={{
                 shrink: true,
                 style: { color: "#fff" },
@@ -196,13 +212,13 @@ export default function Edit({ data }) {
                 style: { color: "#1380F0" },
               }}
               color="secondary"
-              value={details.time.start}
+              //value={details.time.start}
               onChange={handleChangeTime}
               className={classes.datePickor}
             />
             <TextField
               id="datetime-local"
-              name="endDate"
+              name="end"
               label="game date"
               type="datetime-local"
               className={classes.datePickor}

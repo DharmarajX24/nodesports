@@ -67,7 +67,7 @@ function NavBar() {
                   </div>
                   <div className="py-1" role="none">
                     <Link href="/api/auth/logout">
-                      <a className="text-white block px-4 py-2 text-sm hover:text-secondarybranding">
+                      <a className="text-branding block px-4 py-2 text-sm">
                         Logout
                       </a>
                     </Link>
