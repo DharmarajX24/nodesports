@@ -14,10 +14,10 @@ function NavBar() {
   return (
     <nav className=" py-2  absolute z-10">
       <div className="grid-cols-2 grid w-screen items-baseline justify-between">
-        <ul className="flex items-baseline">
+        <ul className="flex items-baseline self-center">
           <li className="px-3 sm:px-6 md:px-10 xl:px-20 font-banger ">
             <Link href="/">
-              <a className="text-2xl md:text-3xl  font-black ">
+              <a className="text-lg sm:text-2xl md:text-3xl  font-black ">
                 <span>Node</span>
                 <span className="text-branding">sports</span>
               </a>
@@ -26,7 +26,7 @@ function NavBar() {
           <li className="px-3 sm:px-6 md:px-10 xl:px-20">
             <Link href="/browse">
               <a
-                className={`text-xl md:text-2xl font-bold text-white hover:text-secondarybranding ${
+                className={`sm:text-xl md:text-2xl font-bold text-white hover:text-secondarybranding ${
                   router.pathname === "/browse" && "underline"
                 }`}
               >
@@ -37,7 +37,7 @@ function NavBar() {
           <li className="px-3 sm:px-6 md:px-10 xl:px-20">
             <Link href="/organize">
               <a
-                className={`text-xl md:text-2xl font-bold text-white hover:text-secondarybranding ${
+                className={`sm:text-xl md:text-2xl font-bold text-white hover:text-secondarybranding ${
                   router.pathname === "/organize" && "underline"
                 }`}
               >
