@@ -27,7 +27,7 @@ module.exports = {
         searchBarAndBtnRowsSmall: "2.25em",
       },
       fontFamily: {
-        banger: "banger",
+        banger: ["banger"],
       },
     },
   },
