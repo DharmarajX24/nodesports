@@ -35,7 +35,9 @@ export default class TournamentsDAO {
   static updateTournament = async (userId, tournamentId, data) => {
     const { db } = await connectToDatabase();
     console.log(
-      `Updating ${tournamentId} by ${userId.split("|")[1]} with data ${JSON.stringify(data)}`
+      `Updating ${tournamentId} by ${
+        userId.split("|")[1]
+      } with data ${JSON.stringify(data)}`
     );
     return db
       .collection("tournaments")
@@ -54,7 +56,10 @@ export default class TournamentsDAO {
     const { db } = await connectToDatabase();
     return db
       .collection("tournaments")
-      .find({ createdBy: userId.split("|")[1] }, { projection: { participants: 0 } })
+      .find(
+        { createdBy: userId.split("|")[1] },
+        { projection: { participants: 0 } }
+      )
       .toArray();
   };
 
