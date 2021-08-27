@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 function NoTournament({ createUserTournament, handlePopup, showPopUp }) {
   return (
     <div className="flex flex-col items-center p-10">
-      <div className="text-3xl">
+      <div className="text-3xl pb-4">
         You dont have any active tournament going on
       </div>
       <Button
