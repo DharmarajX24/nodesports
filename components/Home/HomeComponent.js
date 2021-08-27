@@ -9,9 +9,9 @@ function HomeComponent({ data }) {
   return (
     <div>
       <Image src={Hero2} alt="hero" layout="fill" placeholder="blur" />
-      <h1 className=" z-30 text-white text-5xl  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-banger font-black">
+      <h1 className=" z-30 text-white text-2xl sm:text-4xl md:text-5xl w-full absolute top-1/2 text-center font-banger font-black">
         PLAY, COMPETE, ORGANIZE.
-        <div>
+        <div className='text-center'>
           THE ALL IN ONE <span className="text-branding">ESPORTS</span> PLATFORM
         </div>
       </h1>

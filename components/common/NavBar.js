@@ -15,7 +15,7 @@ function NavBar() {
     <nav className=" py-2  absolute z-10">
       <div className="grid-cols-2 grid w-screen items-baseline justify-between">
         <ul className="flex items-baseline self-center">
-          <li className="px-3 sm:px-6 md:px-10 xl:px-20 font-banger ">
+          <li className="px-1 sm:px-6 md:px-10 xl:px-20 font-banger ">
             <Link href="/">
               <a className="text-lg sm:text-2xl md:text-3xl  font-black ">
                 <span>Node</span>
@@ -23,7 +23,7 @@ function NavBar() {
               </a>
             </Link>
           </li>
-          <li className="px-3 sm:px-6 md:px-10 xl:px-20">
+          <li className="px-1 sm:px-6 md:px-10 xl:px-20">
             <Link href="/browse">
               <a
                 className={`sm:text-xl md:text-2xl font-bold text-white hover:text-secondarybranding ${
@@ -34,7 +34,7 @@ function NavBar() {
               </a>
             </Link>
           </li>
-          <li className="px-3 sm:px-6 md:px-10 xl:px-20">
+          <li className="px-1 sm:px-6 md:px-10 xl:px-20">
             <Link href="/organize">
               <a
                 className={`sm:text-xl md:text-2xl font-bold text-white hover:text-secondarybranding ${
@@ -54,7 +54,7 @@ function NavBar() {
               </button>
               {showMenu && (
                 <div
-                  className="origin-top-right text-left absolute z-20 right-4 p-2 mt-2 w-56 rounded-md shadow-lg bg-secondary ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  className="origin-top-right text-left absolute z-40 right-4 p-2 mt-2 w-56 rounded-md shadow-lg bg-secondary ring-1 ring-black ring-opacity-5 focus:outline-none"
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="menu-button"
@@ -77,7 +77,7 @@ function NavBar() {
             </div>
           ) : (
             <Link href="/api/auth/login">
-              <a className="bg-secondarybranding font-medium  px-6 py-1 rounded hover:bg-white hover:text-secondarybranding hover:border-branding hover:border-2 hover:border-solid">
+              <a className="bg-secondarybranding font-medium px-3 sm:px-6 py-1 rounded hover:bg-white hover:text-secondarybranding hover:border-branding hover:border-2 hover:border-solid">
                 Login
               </a>
             </Link>
