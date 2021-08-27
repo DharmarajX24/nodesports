@@ -15,7 +15,7 @@ function NavBar() {
     <nav className=" py-2  absolute z-10">
       <div className="grid-cols-2 grid w-screen items-baseline justify-between">
         <ul className="flex items-baseline self-center">
-          <li className="px-1 sm:px-6 md:px-10 xl:px-20 font-banger ">
+          <li className="px-1 sm:px-6 md:px-10 xl:px-20 ">
             <Link href="/">
               <a className="text-lg sm:text-2xl md:text-3xl  font-black ">
                 <span>Node</span>

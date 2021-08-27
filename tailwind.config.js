@@ -16,6 +16,9 @@ module.exports = {
       margin: {
         threedotfivepx: "3.5px",
       },
+      minHeight: {
+        halfscreen: "63vh",
+      },
       boxShadow: {
         game: "0 0 24px #1380f0",
       },
@@ -25,6 +28,9 @@ module.exports = {
       gridAutoRows: {
         searchBarAndBtnRows: "4em",
         searchBarAndBtnRowsSmall: "2.25em",
+      },
+      margin: {
+        top100: "100vh",
       },
       fontFamily: {
         banger: ["banger"],
