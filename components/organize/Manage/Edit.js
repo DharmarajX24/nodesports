@@ -45,6 +45,8 @@ export default function Edit({ data }) {
     end: new Date (new Date(details.time.end).toString()).toISOString().split('.')[0].slice(0,-3),
   }
 
+  console.log({materialUiDate}) 
+  console.log({data})
   function handleChange(evt) {
     const value = evt.target.value;
     setDetails({
@@ -73,9 +75,11 @@ export default function Edit({ data }) {
         [evt.target.name]: unixTimeStamp,
       },
     });
+    console.log({unixTimeStamp})
   }
   const updateUserTournament = async () => {
     const updatedData = getChanges(data, details);
+    console.log({updatedData})
     const res = await fetch(`/api/tournaments/${data._id}`, {
       method: "PATCH",
       body: JSON.stringify(updatedData),
