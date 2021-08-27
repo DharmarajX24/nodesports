@@ -9,7 +9,7 @@ export default class TournamentsDAO {
       game,
       description: null,
       image: null,
-      createdBy: userId,
+      createdBy: userId.split("|")[1],
       time: {
         start: 0,
         end: 0,
@@ -35,12 +35,12 @@ export default class TournamentsDAO {
   static updateTournament = async (userId, tournamentId, data) => {
     const { db } = await connectToDatabase();
     console.log(
-      `Updating ${tournamentId} by ${userId} with data ${JSON.stringify(data)}`
+      `Updating ${tournamentId} by ${userId.split("|")[1]} with data ${JSON.stringify(data)}`
     );
     return db
       .collection("tournaments")
       .updateOne(
-        { createdBy: userId, _id: new ObjectId(tournamentId) },
+        { createdBy: userId.split("|")[1], _id: new ObjectId(tournamentId) },
         { $set: data }
       );
   };
@@ -54,7 +54,7 @@ export default class TournamentsDAO {
     const { db } = await connectToDatabase();
     return db
       .collection("tournaments")
-      .find({ createdBy: userId }, { projection: { participants: 0 } })
+      .find({ createdBy: userId.split("|")[1] }, { projection: { participants: 0 } })
       .toArray();
   };
 
@@ -64,7 +64,7 @@ export default class TournamentsDAO {
       .collection("tournaments")
       .updateOne(
         { _id: new ObjectId(tournamentId) },
-        { $push: { participants: userId } }
+        { $addToSet: { participants: userId.split("|")[1] } }
       );
   };
 
@@ -74,7 +74,7 @@ export default class TournamentsDAO {
       .collection("tournaments")
       .updateOne(
         { _id: new ObjectId(tournamentId) },
-        { $pull: { participants: userId } }
+        { $pull: { participants: userId.split("|")[1] } }
       );
   };
 }

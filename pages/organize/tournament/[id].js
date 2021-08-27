@@ -12,6 +12,8 @@ export const getServerSideProps = withPageAuthRequired({
 
     const { id } = context.query;
 
+    console.log(getSession(context.req, context.res))
+
     if (!id.match(/^[0-9a-fA-F]{24}$/)) return { notFound: true };
 
     const { db } = await connectToDatabase();
