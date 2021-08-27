@@ -9,7 +9,7 @@ function TournamentCards({ data, baseRoute }) {
       {data.map((item) => (
         <Link href={`/${baseRoute}/tournament/${item._id}`} key={item._id}>
           <a className="bg-secondary p-4 hover:shadow-game">
-            <div className="flex pb-4">
+            <div className="flex items-center pb-4">
               <Image
                 className="rounded"
                 width="60"
