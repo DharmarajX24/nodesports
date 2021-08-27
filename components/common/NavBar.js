@@ -12,21 +12,21 @@ function NavBar() {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <nav className="px-10 py-2  absolute z-10">
-      <div className="flex items-baseline justify-between">
+    <nav className=" py-2  absolute z-10">
+      <div className="grid-cols-2 grid w-screen items-baseline justify-between">
         <ul className="flex items-baseline">
-          <li className="px-10 ">
+          <li className="px-3 sm:px-6 md:px-10 xl:px-20 font-banger ">
             <Link href="/">
-              <a className="text-2xl font-black italic">
+              <a className="text-2xl md:text-3xl  font-black ">
                 <span>Node</span>
                 <span className="text-branding">sports</span>
               </a>
             </Link>
           </li>
-          <li className="px-10">
+          <li className="px-3 sm:px-6 md:px-10 xl:px-20">
             <Link href="/browse">
               <a
-                className={`text-xl font-bold text-greytext hover:text-secondarybranding ${
+                className={`text-xl md:text-2xl font-bold text-white hover:text-secondarybranding ${
                   router.pathname === "/browse" && "underline"
                 }`}
               >
@@ -34,10 +34,10 @@ function NavBar() {
               </a>
             </Link>
           </li>
-          <li className="px-10">
+          <li className="px-3 sm:px-6 md:px-10 xl:px-20">
             <Link href="/organize">
               <a
-                className={`text-xl font-bold text-greytext hover:text-secondarybranding ${
+                className={`text-xl md:text-2xl font-bold text-white hover:text-secondarybranding ${
                   router.pathname === "/organize" && "underline"
                 }`}
               >
@@ -46,7 +46,7 @@ function NavBar() {
             </Link>
           </li>
         </ul>
-        <div className="px-6">
+        <div className="px-6 text-right">
           {user ? (
             <div className="">
               <button onClick={() => setShowMenu(!showMenu)}>
@@ -54,20 +54,20 @@ function NavBar() {
               </button>
               {showMenu && (
                 <div
-                  className="origin-top-right absolute z-20 right-0 mt-2 w-56 rounded-md shadow-lg bg-secondary ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  className="origin-top-right text-left absolute z-20 right-4 p-2 mt-2 w-56 rounded-md shadow-lg bg-secondary ring-1 ring-black ring-opacity-5 focus:outline-none"
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="menu-button"
                   tabIndex="-1"
                 >
-                  <div className="py-1" role="none">
-                    <div className="text-white block px-4 py-2 text-sm hover:text-secondarybranding">
+                  <div className="" role="none">
+                    <div className="text-white block px-4 py-2 text-sm hover:bg-secondarybranding">
                       Profile
                     </div>
                   </div>
                   <div className="py-1" role="none">
                     <Link href="/api/auth/logout">
-                      <a className="text-branding block px-4 py-2 text-sm">
+                      <a className="text-branding block px-4 py-2 text-sm hover:text-white hover:bg-branding">
                         Logout
                       </a>
                     </Link>

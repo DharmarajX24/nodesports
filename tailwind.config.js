@@ -25,6 +25,9 @@ module.exports = {
       gridAutoRows: {
         searchBarAndBtnRows: "4em",
       },
+      fontFamily:{
+        banger: 'banger'
+      }
     },
   },
   variants: {
