@@ -41,12 +41,18 @@ export default function Edit({ data }) {
   });
 
   const materialUiDate = {
-    start: new Date (new Date(details.time.start).toString()).toISOString().split('.')[0].slice(0,-3),
-    end: new Date (new Date(details.time.end).toString()).toISOString().split('.')[0].slice(0,-3),
-  }
+    start: new Date(new Date(details.time.start).toString())
+      .toISOString()
+      .split(".")[0]
+      .slice(0, -3),
+    end: new Date(new Date(details.time.end).toString())
+      .toISOString()
+      .split(".")[0]
+      .slice(0, -3),
+  };
 
-  console.log({materialUiDate}) 
-  console.log({data})
+  console.log({ materialUiDate });
+  console.log({ data });
   function handleChange(evt) {
     const value = evt.target.value;
     setDetails({
@@ -67,7 +73,7 @@ export default function Edit({ data }) {
   }
   function handleChangeTime(evt) {
     const value = evt.target.value;
-    const unixTimeStamp = new Date(value+':00').getTime()
+    const unixTimeStamp = new Date(value + ":00").getTime();
     setDetails({
       ...details,
       time: {
@@ -75,11 +81,11 @@ export default function Edit({ data }) {
         [evt.target.name]: unixTimeStamp,
       },
     });
-    console.log({unixTimeStamp})
+    console.log({ unixTimeStamp });
   }
   const updateUserTournament = async () => {
     const updatedData = getChanges(data, details);
-    console.log({updatedData})
+    console.log({ updatedData });
     const res = await fetch(`/api/tournaments/${data._id}`, {
       method: "PATCH",
       body: JSON.stringify(updatedData),

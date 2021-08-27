@@ -3,11 +3,18 @@ import FeaturedGame from "./FeaturedGame";
 import FeaturedTournament from "./FeaturedTournament";
 import Image from "next/image";
 import Hero from "../../public/Hero.png";
+import Hero2 from "../../public/Hero2.png";
 
 function HomeComponent({ data }) {
   return (
     <div>
-      <Image src={Hero} alt="hero" layout="responsive" placeholder="blur" />
+      <Image src={Hero2} alt="hero" layout="fill" placeholder="blur" />
+      <h1 className=' z-30 text-white text-5xl  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-banger font-black'>
+        PLAY, COMPETE, ORGANIZE.
+        <div>
+           THE ALL IN ONE <span className='text-branding'>ESPORTS</span> PLATFORM
+        </div>
+      </h1>
       <FeaturedTournament />
       <FeaturedGame />
     </div>

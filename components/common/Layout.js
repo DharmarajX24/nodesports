@@ -5,7 +5,7 @@ function Layout({ children }) {
   return (
     <div className="bg-primary text-white min-h-screen">
       <NavBar />
-      <div className="pt-20">{children}</div>
+      <div className="pt-20 ">{children}</div>
     </div>
   );
 }

@@ -7,7 +7,7 @@ function Tournament({ createUserTournament, handlePopup, showPopUp, data }) {
   console.log({ data });
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="grid grid-cols-searchBarAndBtnColums auto-rows-searchBarAndBtnRows gap-4 px-4">
+      <div className="grid sm:grid-cols-searchBarAndBtnColums auto-rows-searchBarAndBtnRowsSmall md:auto-rows-searchBarAndBtnRows gap-4 px-4">
         <div>
           <input
             className="bg-secondary w-full h-full"
