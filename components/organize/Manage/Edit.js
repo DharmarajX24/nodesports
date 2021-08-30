@@ -51,8 +51,8 @@ export default function Edit({ data }) {
       .slice(0, -3),
   };
 
-  console.log({ materialUiDate });
-  console.log({ data });
+  // console.log({ materialUiDate });
+  // console.log({ data });
   function handleChange(evt) {
     const value = evt.target.value;
     setDetails({

@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 
 function Footer() {
-  console.log(new Date());
   return (
     <footer className="p-10">
       <ul className="flex flex-col justify-center items-center">
