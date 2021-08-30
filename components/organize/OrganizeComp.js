@@ -33,7 +33,7 @@ function OrganizeComp({ data }) {
   };
 
   return (
-    <div className="p-2 md:p-6 min-h-halfscreen">
+    <div className="p-2 md:p-6">
       {data.length ? (
         <Tournament
           createUserTournament={createUserTournament}
