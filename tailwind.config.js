@@ -13,7 +13,7 @@ module.exports = {
       flex: {
         2: "2",
       },
-      margin: {
+      spacing: {
         threedotfivepx: "3.5px",
       },
       boxShadow: {
