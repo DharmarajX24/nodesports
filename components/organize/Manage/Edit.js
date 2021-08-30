@@ -43,7 +43,10 @@ export default function Edit({ data }) {
       discord: data.contact.discord,
     },
   });
-
+  console.log({    
+    start: data.time.start,
+    end: data.time.end,
+  })
   const materialUiDate = {
     start: unixToMaterialUi(details.time.start),
     end: unixToMaterialUi(details.time.end),
