@@ -30,7 +30,7 @@ function TournamentCards({ data, baseRoute }) {
                 <div className="pl-10 text-lg font-medium">28 AUG 2021</div>
               </div>
               <div className="flex">
-              <Location />
+                <Location />
                 <div className="pl-10 text-lg font-medium">AMERICA</div>
               </div>
             </div>

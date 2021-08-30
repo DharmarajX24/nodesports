@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import NoTournament from "./NoTournament";
 import Tournament from "./Tournament";
 import { useRouter } from "next/router";

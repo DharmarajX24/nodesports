@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function Footer() {
   return (
-    <footer className="p-10">
+    <footer className="p-10 bg-secondary">
       <ul className="flex flex-col justify-center items-center">
         <li>
           <Link href="/">
