@@ -12,14 +12,12 @@ export const getServerSideProps = withPageAuthRequired({
 
     const { id } = context.query;
 
-    console.log(getSession(context.req, context.res));
-
     if (!id.match(/^[0-9a-fA-F]{24}$/)) return { notFound: true };
 
     const { db } = await connectToDatabase();
     const data = await db
       .collection("tournaments")
-      .findOne({ _id: new ObjectId(id), createdBy: userId });
+      .findOne({ _id: new ObjectId(id), createdBy: userId.split("|")[1] });
     console.log(data);
 
     if (!data) return { notFound: true };
@@ -29,9 +27,7 @@ export const getServerSideProps = withPageAuthRequired({
 
 export default function ManageTournament({ data }) {
   const router = useRouter();
-  console.log(router.query);
   const { id } = router.query;
-  console.log({ data });
   return (
     <div className="py-10">
       <ManageTabPanel data={data} />
