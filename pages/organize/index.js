@@ -12,7 +12,7 @@ export const getServerSideProps = withPageAuthRequired({
     const { db } = await connectToDatabase();
     const data = await db
       .collection("tournaments")
-      .find({ createdBy: userId }, { projection: { participants: 0 } })
+      .find({ createdBy: userId.split("|")[1] }, { projection: { participants: 0 } })
       .toArray();
     // Pass data to the page via props
     return { props: { data: JSON.parse(JSON.stringify(data)) } };
