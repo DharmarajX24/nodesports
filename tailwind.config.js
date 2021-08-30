@@ -16,14 +16,14 @@ module.exports = {
       margin: {
         threedotfivepx: "3.5px",
       },
-      minHeight: {
-        halfscreen: "63vh",
-      },
       boxShadow: {
         game: "0 0 24px #1380f0",
       },
       gridTemplateColumns: {
         searchBarAndBtnColums: "1fr max-content",
+      },
+      gridTemplateRows: {
+        minfullscreen: "1fr max-content",
       },
       gridAutoRows: {
         searchBarAndBtnRows: "4em",

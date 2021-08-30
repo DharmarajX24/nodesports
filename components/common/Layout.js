@@ -6,8 +6,11 @@ function Layout({ children }) {
   return (
     <div className="bg-primary text-white">
       <NavBar />
-      <div className="pt-20">{children}</div>
-      <Footer />
+
+      <div className='grid min-h-screen grid-rows-minfullscreen'>
+        <div className="pt-20">{children}</div>
+        <Footer />
+      </div>
     </div>
   );
 }

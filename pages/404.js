@@ -1,6 +1,6 @@
 export default function Custom404() {
   return (
-    <div className="min-h-halfscreen flex flex-col items-center justify-around">
+    <div className="flex flex-col items-center justify-around">
       <h1 className="text-2xl md:text-4xl">
         <span className="text-branding">404</span> - Page Not Found
       </h1>
@@ -15,8 +15,8 @@ export default function Custom404() {
         <path
           d="M69.3967 234.992C69.3967 234.992 36.0369 179.737 45.3968 130.158C49.3318 109.348 46.8018 87.8179 37.4669 68.8081C33.023 59.7961 27.7627 51.2103 21.752 43.1582"
           stroke="#535461"
-          stroke-width="2"
-          stroke-miterlimit="10"
+          strokeWidth="2"
+          strokeMiterlimit="10"
         />
         <path
           d="M27.492 11.8834C29.417 19.2233 21.7171 43.9932 21.7171 43.9932C21.7171 43.9932 2.84216 26.1983 0.912166 18.8583C-0.0160875 15.3336 0.493865 11.5845 2.32984 8.4358C4.16581 5.28709 7.17741 2.99667 10.7021 2.06842C14.2268 1.14016 17.9759 1.65012 21.1246 3.48609C24.2734 5.32206 26.5638 8.33365 27.492 11.8584V11.8834Z"
@@ -185,15 +185,15 @@ export default function Custom404() {
           opacity="0.1"
           d="M168.111 119.543C175.843 119.543 182.111 113.275 182.111 105.543C182.111 97.8109 175.843 91.543 168.111 91.543C160.379 91.543 154.111 97.8109 154.111 105.543C154.111 113.275 160.379 119.543 168.111 119.543Z"
           stroke="black"
-          stroke-width="2"
-          stroke-miterlimit="10"
+          strokewidth="2"
+          strokeMiterlimit="10"
         />
         <path
           opacity="0.1"
           d="M277.111 119.543C284.843 119.543 291.111 113.275 291.111 105.543C291.111 97.8109 284.843 91.543 277.111 91.543C269.379 91.543 263.111 97.8109 263.111 105.543C263.111 113.275 269.379 119.543 277.111 119.543Z"
           stroke="black"
-          stroke-width="2"
-          stroke-miterlimit="10"
+          strokeWidth="2"
+          strokeMiterlimit="10"
         />
         <path
           d="M224.611 123.043C229.582 123.043 233.611 119.013 233.611 114.043C233.611 109.072 229.582 105.043 224.611 105.043C219.641 105.043 215.611 109.072 215.611 114.043C215.611 119.013 219.641 123.043 224.611 123.043Z"
@@ -290,8 +290,8 @@ export default function Custom404() {
         <path
           d="M364.111 67.5429C367.977 67.5429 371.111 64.4089 371.111 60.5429C371.111 56.677 367.977 53.543 364.111 53.543C360.245 53.543 357.111 56.677 357.111 60.5429C357.111 64.4089 360.245 67.5429 364.111 67.5429Z"
           stroke="#E2E2EC"
-          stroke-width="2"
-          stroke-miterlimit="10"
+          strokeWidth="2"
+          strokemiterlimit="10"
         />
         <path
           d="M333.861 81.418L345.111 92.6679"
