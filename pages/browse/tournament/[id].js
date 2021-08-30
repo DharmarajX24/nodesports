@@ -26,7 +26,7 @@ export const getServerSideProps = async (context) => {
         JSON.stringify({
           ...rest,
           isParticipant: user && participants.includes(user.sub.split("|")[1]),
-          totalParticipants: participants.length,
+          participants,
         })
       ),
     },
