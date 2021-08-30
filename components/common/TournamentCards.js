@@ -6,12 +6,14 @@ import Calendar from "../icons/Calendar";
 import Location from "../icons/Location";
 import { unixToMaterialUi } from "../../handlers/date-helper"
 import { isObjectEmpty } from '../../handlers/utility'
- 
+import { games } from '../../data/games'
+
 function TournamentCards({ data, baseRoute }) {
-  console.log({data})
+
   return (
     <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-6 px-4">
-      {data.map((card) => (
+      {data.map((card) => {
+        return (
         <Link href={`/${baseRoute}/tournament/${card._id}`} key={card._id}>
           <a className="bg-secondary p-4 hover:shadow-game">
             <div className="flex items-center pb-4">
@@ -21,6 +23,7 @@ function TournamentCards({ data, baseRoute }) {
                 height="60"
                 alt="game cover"
                 src={clashRoyale}
+                // Todo : replace image based on card.name 
               />
               <div className="px-2">
                 <div className=" font-bold">{card.name}</div>
@@ -39,7 +42,7 @@ function TournamentCards({ data, baseRoute }) {
             </div>
           </a>
         </Link>
-      ))}
+      )})}
     </div>
   );
 }
