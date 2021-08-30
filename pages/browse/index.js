@@ -17,6 +17,5 @@ export const getServerSideProps = async () => {
 };
 
 export default function Browse({ data }) {
-  console.log(data);
   return <BrowseComp data={data} />;
 }

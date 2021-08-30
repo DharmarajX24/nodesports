@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { getChanges } from "../../../handlers/data";
 import Button from "@material-ui/core/Button";
+import { unixToMaterialUi,materialUiToUnix } from "../../../handlers/date-helper";
 
 const platforms = ["Xbox", "Pc", "PS4"];
 const regions = ["ASIA", "AMERICA", "EUROPE", "AFRICA"];
@@ -41,14 +42,8 @@ export default function Edit({ data }) {
   });
 
   const materialUiDate = {
-    start: new Date(new Date(details.time.start).toString())
-      .toISOString()
-      .split(".")[0]
-      .slice(0, -3),
-    end: new Date(new Date(details.time.end).toString())
-      .toISOString()
-      .split(".")[0]
-      .slice(0, -3),
+    start: unixToMaterialUi(details.time.start),
+    end: unixToMaterialUi(details.time.end),
   };
 
   // console.log({ materialUiDate });
@@ -73,15 +68,14 @@ export default function Edit({ data }) {
   }
   function handleChangeTime(evt) {
     const value = evt.target.value;
-    const unixTimeStamp = new Date(value + ":00").getTime();
     setDetails({
       ...details,
       time: {
         ...details.time,
-        [evt.target.name]: unixTimeStamp,
+        [evt.target.name]: materialUiToUnix(value),
       },
     });
-    console.log({ unixTimeStamp });
+    console.log(materialUiToUnix(value))
   }
   const updateUserTournament = async () => {
     const updatedData = getChanges(data, details);
@@ -151,8 +145,11 @@ export default function Edit({ data }) {
             }}
             color="secondary"
             fullWidth
-            // helperText="Please select your gaming platform"
+            helperText="Please select your gaming platform"
             variant="filled"
+            FormHelperTextProps={{
+              style: { color: "#fff" },
+            }}
           >
             {platforms.map((option) => (
               <option

@@ -26,7 +26,10 @@ function PopUp({ closePopUp, createUserTournament }) {
         >
           <Cancel />
         </IconButton>
-        <form className="p-4">
+        <form
+          onSubmit={(e) => createUserTournament(e, name, game)}
+          className="p-4"
+        >
           <TextField
             required
             color="secondary"
@@ -77,11 +80,7 @@ function PopUp({ closePopUp, createUserTournament }) {
           </TextField>
 
           <div className="flex justify-end">
-            <Button
-              onClick={(e) => createUserTournament(e, name, game)}
-              variant="contained"
-              color="secondary"
-            >
+            <Button type="submit" variant="contained" color="secondary">
               Create
             </Button>
           </div>
