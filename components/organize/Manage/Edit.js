@@ -3,7 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { getChanges } from "../../../handlers/data";
 import Button from "@material-ui/core/Button";
-import { unixToMaterialUi,materialUiToUnix } from "../../../handlers/date-helper";
+import {
+  unixToMaterialUi,
+  materialUiToUnix,
+} from "../../../handlers/date-helper";
 
 const platforms = ["Xbox", "Pc", "PS4"];
 const regions = ["ASIA", "AMERICA", "EUROPE", "AFRICA"];
@@ -75,7 +78,7 @@ export default function Edit({ data }) {
         [evt.target.name]: materialUiToUnix(value),
       },
     });
-    console.log(materialUiToUnix(value))
+    console.log(materialUiToUnix(value));
   }
   const updateUserTournament = async () => {
     const updatedData = getChanges(data, details);
