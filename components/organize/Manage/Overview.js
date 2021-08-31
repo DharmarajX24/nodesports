@@ -3,13 +3,19 @@ import Image from "next/image";
 import Hero from "../../../public/callofduty.png";
 import { unixToMaterialUi } from "../../../handlers/date-helper";
 import { isObjectEmpty } from "../../../handlers/utility";
+import { games } from '../../../data/games'
 
 function Overview({ data }) {
-  console.log(data);
+  let imageCoverIndex = null;
+  for (const [key, value] of Object.entries(games)) {
+    if (data.game === value.name) {
+      imageCoverIndex = key;
+    }
+  }
+  console.log(imageCoverIndex)
   return (
     <div>
-      <Image src={Hero} alt="" height="400" />
-
+      <Image src={games[imageCoverIndex].image} alt="Game cover" height="400" width='900'/>
       <div className="px-2 py-4">
         <div className="py-2 font-semibold text-2xl">About this tournament</div>
         <div>{data.description || "TBD"}</div>
