@@ -26,9 +26,9 @@ const rows = [
 ];
 
 const columns = [
-  { field: "col1", headerName: "Rank", width: 150, contenteditable:"true"},
-  { field: "col2", headerName: "Name", width: 150 ,contenteditable:"true" },
-  { field: "col3", headerName: "Score", width: 150,contenteditable:"true"},
+  { field: "col1", headerName: "Rank", width: 150, },
+  { field: "col2", headerName: "Name", width: 150 , },
+  { field: "col3", headerName: "Score", width: 150,editable:true},
 ];
 
 function Leaderboard({data}) {
@@ -39,7 +39,7 @@ function Leaderboard({data}) {
   const updateTable = async () => {
     const res = await fetch(`/api/tournaments/${data._id}`, {
         method: "PATCH",
-        body: JSON.stringify({leaderboard:[rowscolumns]}),
+        body: JSON.stringify({ leaderboard:{rows,columns}}),
         headers: { "Content-Type": "application/json" },
       });
       const { data: result, error } = await res.json();
