@@ -8,20 +8,20 @@ export const getServerSideProps = async (context) => {
     user: { sub: userId },
   } = getSession(context.req, context.res);
 
-  const { id } = context.query;
+  let { id } = context.query;
 
-  console.log(context.query, userId);
+  if (id.includes("|")) id = id.split("|")[1]
 
   let projection = {};
 
-  if (userId != id.split("|")[1]) {
+  if (userId != id) {
     projection = { name: 1, uid: 1 };
   }
 
   const { db } = await connectToDatabase();
   const data = await db
     .collection("users")
-    .findOne({ uid: new ObjectId(id.split("|")[1]) }, projection);
+    .findOne({ uid: id }, projection);
 
   console.log(data);
   if (!data) return { notFound: true };
