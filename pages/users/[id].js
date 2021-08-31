@@ -26,7 +26,8 @@ export const getServerSideProps = async (context) => {
   return { props: { data: JSON.parse(JSON.stringify(data)) } };
 };
 
-export default function Userid() {
+export default function Userid({data}) {
+  console.log(data)
   const router = useRouter();
   const { id } = router.query;
   return <p>user: {id}</p>;

@@ -7,4 +7,18 @@ export default class UsersDAO {
     const { id: uid, ...rest } = user;
     return db.collection("users").insertOne({ uid, ...rest });
   };
+
+static addParticipantInUserCollection = async (tournamentId) => {
+  const { db } = await connectToDatabase();
+  return db
+    .collection("users")
+    .updateOne(
+      { _id: new ObjectId(tournamentId) },
+      {
+        $addToSet: {
+          tournaments: tournamentId,
+        },
+      }
+    );
+};
 }
