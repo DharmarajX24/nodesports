@@ -82,4 +82,14 @@ export default class TournamentsDAO {
         { $pull: { participants: userId.split("|")[1] } }
       );
   };
+
+  static searchForTournaments = async (searchStr) => {
+    const {db} = await connectToDatabase()
+    return db
+      .collection("tournaments")
+      .find({'name': {
+        '$regex': searchStr
+      }})
+      .toArray()
+  }
 }
