@@ -7,8 +7,8 @@ export default class TournamentsDAO {
     const newTournamentObj = {
       name,
       game,
-      description: null,
-      image: null,
+      description: "",
+      image: "",
       createdBy: userId.split("|")[1],
       time: {
         start: 0,
@@ -17,13 +17,13 @@ export default class TournamentsDAO {
       participants: [],
       rules: [],
       contact: {
-        email: null,
-        phone: null,
-        twitter: null,
-        discord: null,
+        email: "",
+        phone: "",
+        twitter: "",
+        discord: "",
       },
-      platform: null,
-      region: null,
+      platform: "",
+      region: "",
     };
     const { insertedId } = await db
       .collection("tournaments")

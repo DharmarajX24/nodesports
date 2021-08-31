@@ -29,7 +29,7 @@ export default withApiAuthRequired(async (req, res) => {
       if (slug[1] === "participants") {
         switch (method) {
           case "POST":
-            await TournamentsDAO.addParticipant(slug[0], userId);
+            await TournamentsDAO.addParticipant(slug[0], data.userId);
             return res
               .status(200)
               .json({ data: `User ${userId} added to tournament ${slug[0]}` });
