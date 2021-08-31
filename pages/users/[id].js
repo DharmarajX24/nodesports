@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
-import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { getSession } from "@auth0/nextjs-auth0";
 import { connectToDatabase } from "../../lib/mongodb";
-import { ObjectId } from "mongodb";
 
 export const getServerSideProps = async (context) => {
   const {
