@@ -83,13 +83,17 @@ export default class TournamentsDAO {
       );
   };
 
-  static searchForTournaments = async (searchStr) => {
-    const {db} = await connectToDatabase()
-    return db
-      .collection("tournaments")
-      .find({'name': {
-        '$regex': searchStr
-      }})
-      .toArray()
-  }
+  static searchForTournaments = async (searchStr, userId) => {
+    const { db } = await connectToDatabase();
+    const findObj = {
+      name: {
+        $regex: searchStr,
+      },
+    };
+    if (userId) {
+      findObj["createdBy"] = userId.slice(6);
+    }
+    console.log({ findObj });
+    return db.collection("tournaments").find(findObj).toArray();
+  };
 }
