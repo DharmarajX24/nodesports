@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -9,6 +9,7 @@ import Box from "@material-ui/core/Box";
 import Overview from "./Overview";
 import Edit from "./Edit";
 import Participants from "./Participants";
+import { useRouter } from "next/router";
 
 function ManageTabs(props) {
   const { children, value, index, ...other } = props;
@@ -38,8 +39,7 @@ ManageTabs.propTypes = {
 
 function a11yProps(index) {
   return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
+    "aria-controls": `manage-tournament-tabpanel-${index}`,
   };
 }
 
@@ -51,14 +51,36 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ManageTabPanel({ data }) {
+export default function ManageTabPanel({ data, id }) {
+  const router = useRouter();
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    if (newValue === 0) {
+      router.push(`${id}/?tab=overview`);
+    } else if (newValue === 1) {
+      router.push(`${id}/?tab=edit`);
+    } else {
+      router.push(`${id}/?tab=participants`);
+    }
   };
 
+  useEffect(() => {
+    const { tab } = router.query;
+    switch (tab) {
+      case "edit":
+        setValue(1);
+        break;
+      case "participants":
+        setValue(2);
+        break;
+      case "overview":
+      default:
+        setValue(0);
+    }
+  }, []);
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -66,7 +88,7 @@ export default function ManageTabPanel({ data }) {
           value={value}
           onChange={handleChange}
           className="bg-primary"
-          aria-label="simple tabs example"
+          aria-label="manage tournament tabs"
         >
           <Tab label="Overview" {...a11yProps(0)} />
           <Tab label="Edit" {...a11yProps(1)} />
@@ -80,7 +102,7 @@ export default function ManageTabPanel({ data }) {
         <Edit data={data} />
       </ManageTabs>
       <ManageTabs value={value} index={2}>
-        <Participants />
+        <Participants data={data} />
       </ManageTabs>
     </div>
   );
