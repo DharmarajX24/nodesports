@@ -8,15 +8,14 @@ import { isObjectEmpty } from "../../handlers/utility";
 import { games } from "../../data/games";
 
 function TournamentCards({ data, baseRoute }) {
-  
   return (
     <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-6 px-4">
       {data.map((card) => {
-        let imageCoverIndex = null
+        let imageCoverIndex = null;
         for (const [key, value] of Object.entries(games)) {
-          if(card.game === value.name){
-            imageCoverIndex = key
-          } 
+          if (card.game === value.name) {
+            imageCoverIndex = key;
+          }
         }
         return (
           <Link href={`/${baseRoute}/tournament/${card._id}`} key={card._id}>

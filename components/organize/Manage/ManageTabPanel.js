@@ -62,8 +62,10 @@ export default function ManageTabPanel({ data, id }) {
       router.push(`${id}/?tab=overview`);
     } else if (newValue === 1) {
       router.push(`${id}/?tab=edit`);
-    } else {
+    } else if (newValue === 2) {
       router.push(`${id}/?tab=participants`);
+    } else {
+      router.push(`${id}/?tab=leaderboard`);
     }
   };
 
@@ -75,6 +77,9 @@ export default function ManageTabPanel({ data, id }) {
         break;
       case "participants":
         setValue(2);
+        break;
+      case "leaderboard":
+        setValue(3);
         break;
       case "overview":
       default:
@@ -93,6 +98,7 @@ export default function ManageTabPanel({ data, id }) {
           <Tab label="Overview" {...a11yProps(0)} />
           <Tab label="Edit" {...a11yProps(1)} />
           <Tab label="Participants" {...a11yProps(2)} />
+          <Tab label="Leaderboard" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <ManageTabs value={value} index={0}>
@@ -102,7 +108,10 @@ export default function ManageTabPanel({ data, id }) {
         <Edit data={data} />
       </ManageTabs>
       <ManageTabs value={value} index={2}>
-        <Participants data={data} id={id}/>
+        <Participants data={data} id={id} />
+      </ManageTabs>
+      <ManageTabs value={value} index={3}>
+        Leaderboard
       </ManageTabs>
     </div>
   );
