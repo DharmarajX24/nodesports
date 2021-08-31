@@ -10,6 +10,7 @@ import Overview from "./Overview";
 import Edit from "./Edit";
 import Participants from "./Participants";
 import { useRouter } from "next/router";
+import Leaderboard from "./Leaderboard";
 
 function ManageTabs(props) {
   const { children, value, index, ...other } = props;
@@ -111,7 +112,7 @@ export default function ManageTabPanel({ data, id }) {
         <Participants data={data} id={id} />
       </ManageTabs>
       <ManageTabs value={value} index={3}>
-        Leaderboard
+        <Leaderboard data={data} id={id} />
       </ManageTabs>
     </div>
   );
