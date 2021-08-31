@@ -102,7 +102,7 @@ export default function ManageTabPanel({ data, id }) {
         <Edit data={data} />
       </ManageTabs>
       <ManageTabs value={value} index={2}>
-        <Participants data={data} />
+        <Participants data={data} id={id}/>
       </ManageTabs>
     </div>
   );
