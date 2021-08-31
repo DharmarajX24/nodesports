@@ -69,7 +69,17 @@ export default class TournamentsDAO {
       .collection("tournaments")
       .updateOne(
         { _id: new ObjectId(tournamentId) },
-        { $addToSet: { participants: userId.split("|")[1] } }
+        {
+          $addToSet: {
+            participants: userId.split("|")[1],
+            rows: {
+              id: userId.split("|")[1],
+              col1: "-",
+              col2: userId.split("|")[1],
+              col3: 0,
+            },
+          },
+        }
       );
   };
 
