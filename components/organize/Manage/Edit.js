@@ -27,6 +27,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function Edit({ data }) {
+  console.log(data);
   const classes = useStyles();
   const [details, setDetails] = useState({
     description: data.description,
@@ -43,10 +44,21 @@ export default function Edit({ data }) {
       discord: data.contact.discord,
     },
   });
-  console.log({    
-    start: data.time.start,
-    end: data.time.end,
-  })
+  /*console.log({
+    description: data.description,
+    platform: data.platform,
+    region: data.region,
+    time: {
+      start: data.time.start,
+      end: data.time.end,
+    },
+    contact: {
+      email: data.contact.email,
+      phone: data.contact.phone,
+      twitter: data.contact.twitter,
+      discord: data.contact.discord,
+    },
+  }) */
   const materialUiDate = {
     start: unixToMaterialUi(details.time.start),
     end: unixToMaterialUi(details.time.end),
