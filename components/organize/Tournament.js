@@ -32,7 +32,7 @@ function Tournament({ createUserTournament, handlePopup, showPopUp, data: initDa
       <div className="grid sm:grid-cols-searchBarAndBtnColums auto-rows-searchBarAndBtnRowsSmall md:auto-rows-searchBarAndBtnRows gap-4 px-4">
         <div>
           <input
-            className="bg-secondary w-full h-full"
+            className="bg-secondary px-1 md:px-4 w-full h-full"
             type="text"
             placeholder="Search..."
             onChange={(e) => setSearchStrDebounced(e.target.value)}
