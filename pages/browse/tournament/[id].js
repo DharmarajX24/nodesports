@@ -10,7 +10,15 @@ export const getServerSideProps = async (context) => {
     req,
     res,
   } = context;
-  const { user } = getSession(req, res);
+  const result = getSession(req, res);
+  if(result === null) {
+    return {
+      props: {
+        redirect: true
+      }
+    }
+  }
+  const user = result.user
 
   const { db } = await connectToDatabase();
   const data = await db
@@ -33,8 +41,14 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-export default function BrowseTournamentPage({ data }) {
+export default function BrowseTournamentPage({ data, redirect }) {
   const router = useRouter();
+  if(redirect) {
+      router.replace("/api/auth/login");
+    return (
+      <div></div>
+    )
+  }
   console.log(router.query);
   const { id } = router.query;
   console.log(data);
