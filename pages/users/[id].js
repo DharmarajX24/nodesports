@@ -10,7 +10,7 @@ export const getServerSideProps = async (context) => {
 
   const { id } = context.query;
 
-  console.log(context.query);
+  console.log(context.query, userId);
 
   let projection = {};
 
