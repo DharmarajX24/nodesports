@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import Hero from "../../../public/callofduty.png";
 import { unixToMaterialUi } from "../../../handlers/date-helper";
 import { isObjectEmpty } from "../../../handlers/utility";
 import { games } from '../../../data/games'
@@ -12,7 +11,6 @@ function Overview({ data }) {
       imageCoverIndex = key;
     }
   }
-  console.log(imageCoverIndex)
   return (
     <div>
       <Image src={games[imageCoverIndex].image} alt="Game cover" height="400" width='900'/>
