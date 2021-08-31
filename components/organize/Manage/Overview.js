@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Hero from "../../../public/cod.png";
+import Hero from "../../../public/callofduty.png";
 import { unixToMaterialUi } from "../../../handlers/date-helper";
 import { isObjectEmpty } from "../../../handlers/utility";
 
