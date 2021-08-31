@@ -1,4 +1,5 @@
 import { connectToDatabase } from "../lib/mongodb";
+import { ObjectId } from "mongodb";
 
 export default class UsersDAO {
   static addUser = async (user) => {
@@ -8,12 +9,12 @@ export default class UsersDAO {
     return db.collection("users").insertOne({ uid, ...rest });
   };
 
-static addParticipantInUserCollection = async (tournamentId) => {
+static addParticipantInUserCollection = async (tournamentId,userId) => {
   const { db } = await connectToDatabase();
   return db
     .collection("users")
-    .updateOne(
-      { _id: new ObjectId(tournamentId) },
+    .insertOne(
+      { _id: new ObjectId(userId.split("|")[1]) },
       {
         $addToSet: {
           tournaments: tournamentId,

@@ -10,7 +10,6 @@ function NavBar() {
   const [showMenu, setShowMenu] = useState(false);
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
-console.log({user})
   return (
     <nav className=" py-2  absolute z-10">
       <div className="grid-cols-2 grid w-screen items-baseline justify-between">
