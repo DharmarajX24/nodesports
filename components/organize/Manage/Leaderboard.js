@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useCallback } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -29,12 +29,27 @@ const rows = [
 const columns = [
   { field: "col1", headerName: "Rank", width: 150 },
   { field: "col2", headerName: "Name", width: 150 },
-  { field: "col3", headerName: "Score", width: 150, editable: true },
+  { field: "col3", headerName: "Score", width: 150, editable: true,  type: 'number' },
 ];
 
 function Leaderboard({ data }) {
+
   const classes = useStyles();
   const [rows, setRows] = useState(data.rows);
+  const [editRowsModel, setEditRowsModel] = useState({});
+  const handleEditRowsModelChange = useCallback((model) => {
+    setEditRowsModel(model);
+    let indexVal = null
+    const id = Object.keys(model)[0]
+    const index = rows.some((e,i)=>{
+      if(e.id === id){
+      indexVal = i
+      }
+    }) 
+    let getRows = rows 
+    getRows[indexVal].col3 = model[id].col3.value 
+    setRows(getRows)
+  }, [rows]);
 
   const updateTable = async () => {
     const res = await fetch(`/api/tournaments/${data._id}`, {
@@ -43,18 +58,19 @@ function Leaderboard({ data }) {
       headers: { "Content-Type": "application/json" },
     });
     const { data: result, error } = await res.json();
-    console.log(result);
+
   };
-  console.log(rows);
 
   return (
     <div className={classes.root}>
       <DataGrid
         rows={rows}
         columns={columns}
-        className={`${classes.grid} `}
+        className={classes.grid}
         autoHeight
         hideFooter
+        editRowsModel={editRowsModel}
+        onEditRowsModelChange={handleEditRowsModelChange}
       />
       <div className="my-2 sm:my-4 text-right">
         <Button
