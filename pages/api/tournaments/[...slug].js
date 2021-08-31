@@ -1,4 +1,5 @@
 import TournamentsDAO from "../../../dao/tournamentsDAO";
+import UsersDAO from "../../../dao/usersDAO";
 import { getSession, withApiAuthRequired } from "@auth0/nextjs-auth0";
 
 export default withApiAuthRequired(async (req, res) => {
@@ -30,6 +31,7 @@ export default withApiAuthRequired(async (req, res) => {
         switch (method) {
           case "POST":
             await TournamentsDAO.addParticipant(slug[0], userId);
+            await TournamentsDAO.addParticipantInUserCollection(slug[0])
             return res
               .status(200)
               .json({ data: `User ${userId} added to tournament ${slug[0]}` });
