@@ -30,7 +30,7 @@ export default function ManageTournament({ data }) {
   const { id } = router.query;
   return (
     <div className="py-10">
-      <ManageTabPanel data={data} />
+      <ManageTabPanel data={data} id={id}/>
     </div>
   );
 }
