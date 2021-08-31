@@ -9,7 +9,7 @@ export const getServerSideProps = async (context) => {
 
   let { id } = context.query;
 
-  if (id.includes("|")) id = id.split("|")[1]
+  if (id.includes("|")) id = id.split("|")[1];
 
   let projection = {};
 
@@ -18,9 +18,7 @@ export const getServerSideProps = async (context) => {
   }
 
   const { db } = await connectToDatabase();
-  const data = await db
-    .collection("users")
-    .findOne({ uid: id }, projection);
+  const data = await db.collection("users").findOne({ uid: id }, projection);
 
   console.log(data);
   if (!data) return { notFound: true };
