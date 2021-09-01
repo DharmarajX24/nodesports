@@ -3,10 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { getChanges } from "../../../handlers/data";
 import Button from "@material-ui/core/Button";
-import {
-  unixToMaterialUi,
-  materialUiToUnix,
-} from "../../../handlers/date-helper";
+
 
 const platforms = ["Xbox", "Pc", "PS4"];
 const regions = ["ASIA", "AMERICA", "EUROPE", "AFRICA"];
@@ -44,7 +41,7 @@ export default function Edit({ data }) {
       discord: data.contact.discord,
     },
   });
-  /*console.log({
+  console.log({
     description: data.description,
     platform: data.platform,
     region: data.region,
@@ -58,14 +55,8 @@ export default function Edit({ data }) {
       twitter: data.contact.twitter,
       discord: data.contact.discord,
     },
-  }) */
-  const materialUiDate = {
-    start: unixToMaterialUi(details.time.start),
-    end: unixToMaterialUi(details.time.end),
-  };
+  }) 
 
-  // console.log({ materialUiDate });
-  // console.log({ data });
   function handleChange(evt) {
     const value = evt.target.value;
     setDetails({
@@ -90,10 +81,9 @@ export default function Edit({ data }) {
       ...details,
       time: {
         ...details.time,
-        [evt.target.name]: materialUiToUnix(value),
+        [evt.target.name]: value,
       },
     });
-    console.log(materialUiToUnix(value));
   }
   const updateUserTournament = async () => {
     const updatedData = getChanges(data, details);
@@ -228,7 +218,7 @@ export default function Edit({ data }) {
                 style: { color: "#1380F0" },
               }}
               color="secondary"
-              value={materialUiDate.start}
+              value={details.time.start}
               onChange={handleChangeTime}
               className={classes.datePickor}
             />
@@ -246,7 +236,7 @@ export default function Edit({ data }) {
                 style: { color: "#1380F0" },
               }}
               color="secondary"
-              value={materialUiDate.end}
+              value={details.time.end}
               onChange={handleChangeTime}
             />
           </div>
