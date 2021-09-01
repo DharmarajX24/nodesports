@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { unixToMaterialUi } from "../../../handlers/date-helper";
 import { isObjectEmpty } from "../../../handlers/utility";
 import { games } from '../../../data/games'
 
@@ -31,10 +30,10 @@ function Overview({ data }) {
           <div className="text-xs text-gray-400">Date and time</div>
           <div className="">
             {data.time.start !== 0
-              ? unixToMaterialUi(data.time.start)
+              ? data.time.start
               : "Schedule unavailable"}
             <br />
-            {data.time.start !== 0 && unixToMaterialUi(data.time.end)}
+            {data.time.start !== 0 && data.time.end}
           </div>
         </div>
       </div>

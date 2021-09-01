@@ -17,6 +17,7 @@ function TournamentCards({ data, baseRoute }) {
             imageCoverIndex = key;
           }
         }
+        console.log(card)
         return (
           <Link href={`/${baseRoute}/tournament/${card._id}`} key={card._id}>
             <a className="bg-secondary p-4 hover:shadow-game">
@@ -38,7 +39,7 @@ function TournamentCards({ data, baseRoute }) {
                 <div className="flex pb-4">
                   <Calendar />
                   <div className="pl-10 text-lg font-medium">
-                    {card.time.start === 0 || isObjectEmpty(card.time)
+                    {card.time.start === 0 || isObjectEmpty(card.time.start)
                       ? "TBD"
                       : unixToMaterialUi(card.time.start)}
                   </div>
