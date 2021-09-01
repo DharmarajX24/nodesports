@@ -86,11 +86,9 @@ export default function Edit({ data }) {
     });
   }
   const updateUserTournament = async () => {
-    const updatedData = getChanges(data, details);
-    console.log({ updatedData });
     const res = await fetch(`/api/tournaments/${data._id}`, {
-      method: "PATCH",
-      body: JSON.stringify(updatedData),
+      method: "POST",
+      body: JSON.stringify(details),
       headers: { "Content-Type": "application/json" },
     });
     const { data: result, error } = await res.json();
@@ -99,6 +97,7 @@ export default function Edit({ data }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(details)
     updateUserTournament();
   };
   return (

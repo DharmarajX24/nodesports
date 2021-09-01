@@ -21,7 +21,7 @@ export default withApiAuthRequired(async (req, res) => {
 
   switch (slug.length) {
     case 1:
-      if (method === "PATCH") {
+      if (method === "POST") {
         await TournamentsDAO.updateTournament(userId, slug[0], data);
         return res.status(200).json({ data: `Tournament ${slug[0]} updated` });
       }

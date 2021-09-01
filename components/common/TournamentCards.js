@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Calendar from "../icons/Calendar";
 import Location from "../icons/Location";
-import { unixToMaterialUi } from "../../handlers/date-helper";
 import { isObjectEmpty } from "../../handlers/utility";
 import { games } from "../../data/games";
 
@@ -17,7 +16,6 @@ function TournamentCards({ data, baseRoute }) {
             imageCoverIndex = key;
           }
         }
-        console.log(card)
         return (
           <Link href={`/${baseRoute}/tournament/${card._id}`} key={card._id}>
             <a className="bg-secondary p-4 hover:shadow-game">
@@ -41,13 +39,13 @@ function TournamentCards({ data, baseRoute }) {
                   <div className="pl-10 text-lg font-medium">
                     {card.time.start === 0 || isObjectEmpty(card.time.start)
                       ? "TBD"
-                      : unixToMaterialUi(card.time.start)}
+                      : card.time.start}
                   </div>
                 </div>
                 <div className="flex">
                   <Location />
                   <div className="pl-10 text-lg font-medium">
-                    {data.region || "TBD"}
+                    {card.region || "TBD"}
                   </div>
                 </div>
               </div>
