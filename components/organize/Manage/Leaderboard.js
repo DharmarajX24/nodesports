@@ -36,6 +36,7 @@ function Leaderboard({ data }) {
 
   const classes = useStyles();
   const [rows, setRows] = useState(data.rows);
+
   const [editRowsModel, setEditRowsModel] = useState({});
   const handleEditRowsModelChange = useCallback((model) => {
     setEditRowsModel(model);
@@ -50,7 +51,10 @@ function Leaderboard({ data }) {
     getRows[indexVal].col3 = model[id].col3.value 
     setRows(getRows)
   }, [rows]);
-
+  if(!rows)
+  return <div>
+    Leadearboard will enable once there are participants
+  </div>
   const updateTable = async () => {
     const res = await fetch(`/api/tournaments/${data._id}`, {
       method: "PATCH",
@@ -58,12 +62,13 @@ function Leaderboard({ data }) {
       headers: { "Content-Type": "application/json" },
     });
     const { data: result, error } = await res.json();
-
   };
 
   return (
     <div className={classes.root}>
-      <DataGrid
+      
+
+        <DataGrid
         rows={rows}
         columns={columns}
         className={classes.grid}
@@ -81,6 +86,7 @@ function Leaderboard({ data }) {
           Save Changes
         </Button>
       </div>
+
     </div>
   );
 }
