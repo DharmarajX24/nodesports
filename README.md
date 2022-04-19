@@ -1,7 +1,5 @@
-![image](https://user-images.githubusercontent.com/52914487/131301955-d978bcba-2b25-44c0-b036-140c14ee69d8.png)
 
-## About 
-
+## About
 An open source web app to host your tournaments and events.
 
 ## :rocket: Local Development

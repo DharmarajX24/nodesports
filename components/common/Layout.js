@@ -4,12 +4,10 @@ import Footer from "./Footer";
 
 function Layout({ children }) {
   return (
-    <div className="bg-primary text-white">
+    <div className="grid text-white bg-primary ">
       <NavBar />
-      <div className="grid min-h-screen grid-rows-minfullscreen">
-        <div className="pt-20">{children}</div>
-        <Footer />
-      </div>
+      <div>{children}</div>
+      <Footer />
     </div>
   );
 }

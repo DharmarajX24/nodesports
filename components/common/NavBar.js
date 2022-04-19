@@ -11,12 +11,12 @@ function NavBar() {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
   return (
-    <nav className=" py-2  absolute z-10">
-      <div className="grid-cols-2 grid w-screen items-baseline justify-between">
+    <nav className="py-2">
+      <div className="grid items-baseline justify-between w-screen grid-cols-2">
         <ul className="flex items-baseline self-center">
           <li className="px-1 sm:px-6 md:px-10 xl:px-20 ">
             <Link href="/">
-              <a className="text-lg sm:text-2xl md:text-3xl  font-black ">
+              <a className="text-lg font-black sm:text-2xl md:text-3xl ">
                 <span>Node</span>
                 <span className="text-branding">sports</span>
               </a>
@@ -53,7 +53,7 @@ function NavBar() {
               </button>
               {showMenu && (
                 <div
-                  className="origin-top-right text-left absolute z-40 right-4 p-2 mt-2 w-56 rounded-md shadow-lg bg-secondary ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  className="absolute z-40 w-56 p-2 mt-2 text-left origin-top-right rounded-md shadow-lg right-4 bg-secondary ring-1 ring-black ring-opacity-5 focus:outline-none"
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="menu-button"
@@ -61,14 +61,14 @@ function NavBar() {
                 >
                   <div className="" role="none">
                     <Link href={`/users/${user.sub.split("|")[1]}`}>
-                      <a className="text-white block px-4 py-2 text-sm hover:bg-secondarybranding">
+                      <a className="block px-4 py-2 text-sm text-white hover:bg-secondarybranding">
                         Profile
                       </a>
                     </Link>
                   </div>
                   <div className="py-1" role="none">
                     <Link href="/api/auth/logout">
-                      <a className="text-branding block px-4 py-2 text-sm hover:text-white hover:bg-branding">
+                      <a className="block px-4 py-2 text-sm text-branding hover:text-white hover:bg-branding">
                         Logout
                       </a>
                     </Link>
@@ -78,7 +78,7 @@ function NavBar() {
             </div>
           ) : (
             <Link href="/api/auth/login">
-              <a className="bg-secondarybranding font-medium px-3 sm:px-6 py-1 rounded hover:bg-white hover:text-secondarybranding hover:border-branding hover:border-2 hover:border-solid">
+              <a className="px-3 py-1 font-medium rounded bg-secondarybranding sm:px-6 hover:bg-white hover:text-secondarybranding hover:border-branding hover:border-2 hover:border-solid">
                 Login
               </a>
             </Link>
