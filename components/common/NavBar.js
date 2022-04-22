@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
-import Avatar from "@material-ui/core/Avatar";
+import Avatar from "@mui/material/Avatar";
 import { useRouter } from "next/router";
 
 function NavBar() {
