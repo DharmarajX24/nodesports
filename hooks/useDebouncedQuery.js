@@ -1,4 +1,4 @@
-import { debounce } from "@material-ui/core";
+import { debounce } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 
 export default function useDebouncedQuery(fnToRunOnChange, debounceInterval) {

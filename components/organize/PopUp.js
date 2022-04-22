@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import TextField from "@material-ui/core/TextField";
+import TextField from "@mui/material/TextField";
 import { games } from "../../data/games";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 import Cancel from "../icons/Cancel";
 
 function PopUp({ closePopUp, createUserTournament }) {
@@ -23,7 +23,7 @@ function PopUp({ closePopUp, createUserTournament }) {
           className="self-end mr-4 mt-4"
           onClick={() => closePopUp()}
           aria-label="close pop up"
-        >
+          size="large">
           <Cancel />
         </IconButton>
         <form

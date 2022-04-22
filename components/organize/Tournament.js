@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import PopUp from "./PopUp";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 import TournamentCards from "../common/TournamentCards";
-import { debounce } from "@material-ui/core";
+import { debounce } from "@mui/material";
 import axios from "axios";
 import useDebouncedQuery from "../../hooks/useDebouncedQuery";
 

@@ -1,7 +1,7 @@
 import React, { useState,useCallback } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import makeStyles from '@mui/styles/makeStyles';
+import Button from "@mui/material/Button";
 
 const useStyles = makeStyles(() => ({
   root: {

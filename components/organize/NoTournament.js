@@ -1,6 +1,6 @@
 import React from "react";
 import PopUp from "./PopUp";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 
 function NoTournament({ createUserTournament, handlePopup, showPopUp }) {
   return (

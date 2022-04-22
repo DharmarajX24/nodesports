@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import makeStyles from '@mui/styles/makeStyles';
+import TextField from "@mui/material/TextField";
 import { getChanges } from "../../../handlers/data";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 
 
 const platforms = ["Xbox", "Pc", "PS4"];
