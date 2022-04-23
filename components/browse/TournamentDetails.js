@@ -21,13 +21,11 @@ function TournamentDetails({ data }) {
     result && setIsParticipant(true);
   };
   const leaveTournament = async () => {
-    console.log("leave tournament called");
     const res = await fetch(`/api/tournaments/${data._id}/participants`, {
       method: "DELETE",
     });
     const { data: result, error } = await res.json();
     result && setIsParticipant(false);
-    console.log(result);
   };
 
   return (

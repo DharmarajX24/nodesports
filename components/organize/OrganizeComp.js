@@ -14,21 +14,14 @@ function OrganizeComp({ data }) {
 
   const createUserTournament = async (e, name, game) => {
     e.preventDefault();
-    console.log("called");
     const res = await fetch("/api/tournaments", {
       method: "POST",
       body: JSON.stringify({ name, game }),
       headers: { "Content-Type": "application/json" },
     });
-
     const { data, error } = await res.json();
 
-    if (data) {
-      await router.push(`/organize/tournament/${data}`);
-    } else {
-      console.log(error);
-    }
-
+    if (data) await router.push(`/organize/tournament/${data}`);
     setShowPopup(false);
   };
 

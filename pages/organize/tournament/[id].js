@@ -18,7 +18,6 @@ export const getServerSideProps = withPageAuthRequired({
     const data = await db
       .collection("tournaments")
       .findOne({ _id: new ObjectId(id), createdBy: userId.split("|")[1] });
-    console.log(data);
 
     if (!data) return { notFound: true };
     return { props: { data: JSON.parse(JSON.stringify(data)) } };

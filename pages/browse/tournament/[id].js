@@ -47,8 +47,6 @@ export default function BrowseTournamentPage({ data, redirect }) {
     router.replace("/api/auth/login");
     return <div></div>;
   }
-  console.log(router.query);
   const { id } = router.query;
-  console.log(data);
   return <TournamentDetails data={data} />;
 }

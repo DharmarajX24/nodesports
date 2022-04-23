@@ -8,23 +8,7 @@ const platforms = ["Xbox", "Pc", "PS4"];
 const regions = ["ASIA", "AMERICA", "EUROPE", "AFRICA"];
 
 export default function Edit({ data }) {
-  console.log(data);
   const [details, setDetails] = useState({
-    description: data.description,
-    platform: data.platform,
-    region: data.region,
-    time: {
-      start: data.time.start,
-      end: data.time.end,
-    },
-    contact: {
-      email: data.contact.email,
-      phone: data.contact.phone,
-      twitter: data.contact.twitter,
-      discord: data.contact.discord,
-    },
-  });
-  console.log({
     description: data.description,
     platform: data.platform,
     region: data.region,
@@ -75,12 +59,10 @@ export default function Edit({ data }) {
       headers: { "Content-Type": "application/json" },
     });
     const { data: result, error } = await res.json();
-    console.log(result);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(details);
     updateUserTournament();
   };
   return (

@@ -9,8 +9,6 @@ export default withApiAuthRequired(async (req, res) => {
     body: data,
   } = req;
 
-  console.log("Slug", slug);
-
   if (!slug[0].match(/^[0-9a-fA-F]{24}$/)) {
     return res.status(400).json({ error: "Invalid Tournament ID" });
   }
@@ -30,7 +28,7 @@ export default withApiAuthRequired(async (req, res) => {
       if (slug[1] === "participants") {
         switch (method) {
           case "POST":
-            await UsersDAO.addParticipantInUserCollection(slug[0],userId)
+            await UsersDAO.addParticipantInUserCollection(slug[0], userId);
             await TournamentsDAO.addParticipant(slug[0], userId);
             return res
               .status(200)

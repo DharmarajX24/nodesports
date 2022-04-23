@@ -20,14 +20,12 @@ export const getServerSideProps = async (context) => {
   const { db } = await connectToDatabase();
   const data = await db.collection("users").findOne({ uid: id }, projection);
 
-  console.log(data);
   if (!data) return { notFound: true };
   // Pass data to the page via props
   return { props: { data: JSON.parse(JSON.stringify(data)) } };
 };
 
-export default function Userid({data}) {
-  console.log(data)
+export default function Userid({ data }) {
   const router = useRouter();
   const { id } = router.query;
   return <p>user: {id}</p>;

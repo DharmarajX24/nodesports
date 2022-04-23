@@ -10,7 +10,6 @@ export const getServerSideProps = async () => {
     .sort({ createdAt: -1 })
     .limit(20)
     .toArray();
-  console.log(data);
 
   if (!data) return { notFound: true };
   return { props: { data: JSON.parse(JSON.stringify(data)) } };

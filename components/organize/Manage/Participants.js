@@ -13,7 +13,6 @@ function Participants({ data, id }) {
       headers: { "Content-Type": "application/json" },
     });
     const { data: result, error } = await res.json();
-    console.log(result);
     if (!error) setParticipants(participants.splice(index, 1));
   };
 
