@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import makeStyles from '@mui/styles/makeStyles';
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -44,17 +43,8 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    maxWidth: 896,
-    margin: "0 auto",
-  },
-}));
-
 export default function ManageTabPanel({ data, id }) {
   const router = useRouter();
-  const classes = useStyles();
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -88,13 +78,15 @@ export default function ManageTabPanel({ data, id }) {
     }
   }, []);
   return (
-    <div className={classes.root}>
+    <Box sx={{ maxWidth: "896px", margin: "0 auto" }}>
       <AppBar position="static">
         <Tabs
           value={value}
           onChange={handleChange}
           className="bg-primary"
           aria-label="manage tournament tabs"
+          indicatorColor="primary"
+          textColor="inherit"
         >
           <Tab label="Overview" {...a11yProps(0)} />
           <Tab label="Edit" {...a11yProps(1)} />
@@ -114,6 +106,6 @@ export default function ManageTabPanel({ data, id }) {
       <ManageTabs value={value} index={3}>
         <Leaderboard data={data} id={id} />
       </ManageTabs>
-    </div>
+    </Box>
   );
 }

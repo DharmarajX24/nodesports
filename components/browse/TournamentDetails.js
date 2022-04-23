@@ -31,14 +31,10 @@ function TournamentDetails({ data }) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto py-20">
+    <div className="max-w-4xl py-20 mx-auto">
       <div className="flex justify-end pb-4">
         {isParticipant ? (
-          <Button
-            onClick={() => leaveTournament()}
-            variant="contained"
-            color="primary"
-          >
+          <Button onClick={() => leaveTournament()} variant="contained">
             Leave Tournament
           </Button>
         ) : (

@@ -1,31 +1,14 @@
 import React, { useState } from "react";
-import makeStyles from '@mui/styles/makeStyles';
 import TextField from "@mui/material/TextField";
 import { getChanges } from "../../../handlers/data";
 import Button from "@mui/material/Button";
-
+import Box from "@mui/material/Box";
 
 const platforms = ["Xbox", "Pc", "PS4"];
 const regions = ["ASIA", "AMERICA", "EUROPE", "AFRICA"];
-const useStyles = makeStyles(() => ({
-  root: {
-    "& .MuiTextField-root": {
-      backgroundColor: "#282C38",
-      width: "100%",
-    },
-  },
-  textField: {
-    width: 400,
-    margin: "8px",
-  },
-  datePickor: {
-    margin: "8px",
-  },
-}));
 
 export default function Edit({ data }) {
   console.log(data);
-  const classes = useStyles();
   const [details, setDetails] = useState({
     description: data.description,
     platform: data.platform,
@@ -55,7 +38,7 @@ export default function Edit({ data }) {
       twitter: data.contact.twitter,
       discord: data.contact.discord,
     },
-  }) 
+  });
 
   function handleChange(evt) {
     const value = evt.target.value;
@@ -97,24 +80,18 @@ export default function Edit({ data }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(details)
+    console.log(details);
     updateUserTournament();
   };
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={classes.root}
-      noValidate
-      autoComplete="off"
-    >
-      <div className="text-white w-full">
+    <Box onSubmit={handleSubmit} noValidate autoComplete="off">
+      <div className="w-full text-white">
         <div className="py-4">
-          <div className="text-2xl px-2">About this tournament</div>
+          <div className="px-2 text-2xl">About this tournament</div>
 
           <TextField
             id="standard-multiline-static"
             label="Description"
-            className={classes.textField}
             multiline
             rows={4}
             onChange={handleChange}
@@ -132,11 +109,11 @@ export default function Edit({ data }) {
         </div>
 
         <div className="py-4">
-          <div className="text-2xl px-2">Details</div>
+          <div className="px-2 text-2xl">Details</div>
           <TextField
             id="filled-select-currency-native"
             select
-            className={classes.textField}
+            sx={{ width: "400px", margin: "8px" }}
             name="platform"
             label="platform"
             value={details.platform}
@@ -171,7 +148,7 @@ export default function Edit({ data }) {
           <TextField
             id="filled-select-currency-native"
             select
-            className={classes.textField}
+            sx={{ width: "400px", margin: "8px" }}
             name="region"
             label="region"
             value={details.region}
@@ -219,14 +196,14 @@ export default function Edit({ data }) {
               color="secondary"
               value={details.time.start}
               onChange={handleChangeTime}
-              className={classes.datePickor}
+              sx={{ margin: "8px" }}
             />
             <TextField
               id="datetime-local"
               name="end"
               label="game date"
               type="datetime-local"
-              className={classes.datePickor}
+              sx={{ margin: "8px" }}
               InputLabelProps={{
                 shrink: true,
                 style: { color: "#fff" },
@@ -241,8 +218,8 @@ export default function Edit({ data }) {
           </div>
         </div>
 
-        <div className="flex py-4 flex-col">
-          <div className="text-2xl px-2">Contact</div>
+        <div className="flex flex-col py-4">
+          <div className="px-2 text-2xl">Contact</div>
           <TextField
             onChange={handleChangeContact}
             type="email"
@@ -254,7 +231,7 @@ export default function Edit({ data }) {
             InputProps={{
               style: { color: "#1380F0" },
             }}
-            className={classes.textField}
+            sx={{ width: "400px", margin: "8px" }}
             value={details.contact.email}
             id="standard-basic"
             label="email"
@@ -270,7 +247,7 @@ export default function Edit({ data }) {
             InputProps={{
               style: { color: "#1380F0" },
             }}
-            className={classes.textField}
+            sx={{ width: "400px", margin: "8px" }}
             value={details.contact.phone}
             id="standard-basic"
             label="phone"
@@ -286,7 +263,7 @@ export default function Edit({ data }) {
             InputProps={{
               style: { color: "#1380F0" },
             }}
-            className={classes.textField}
+            sx={{ width: "400px", margin: "8px" }}
             value={details.contact.twitter}
             id="standard-basic"
             label="twitter"
@@ -302,19 +279,19 @@ export default function Edit({ data }) {
             InputProps={{
               style: { color: "#1380F0" },
             }}
-            className={classes.textField}
+            sx={{ width: "400px", margin: "8px" }}
             value={details.contact.discord}
             id="standard-basic"
             label="discord"
           />
         </div>
 
-        <div className="p-2 flex justify-end">
+        <div className="flex justify-end p-2">
           <Button type="submit" variant="contained" color="secondary">
             Update
           </Button>
         </div>
       </div>
-    </form>
+    </Box>
   );
 }

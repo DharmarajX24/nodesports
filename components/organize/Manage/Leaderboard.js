@@ -1,24 +1,7 @@
-import React, { useState,useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import makeStyles from '@mui/styles/makeStyles';
 import Button from "@mui/material/Button";
-
-const useStyles = makeStyles(() => ({
-  root: {
-    "&  .MuiDataGrid-root ": {
-      backgroundColor: "#282C38",
-      width: "100%",
-    },
-  },
-  child: {
-    "& .MuiDataGrid-selectedRowCount 	.MuiDataGrid-selectedRowCount": {
-      color: "#fff",
-    },
-  },
-  grid: {
-    color: "#fff",
-  },
-}));
+import Box from "@mui/material/Box";
 
 const rows = [
   { id: 1, col1: "Hello", col2: "World", col3: "dahdha" },
@@ -29,32 +12,37 @@ const rows = [
 const columns = [
   { field: "col1", headerName: "Rank", width: 150 },
   { field: "col2", headerName: "Name", width: 150 },
-  { field: "col3", headerName: "Score", width: 150, editable: true,  type: 'number' },
+  {
+    field: "col3",
+    headerName: "Score",
+    width: 150,
+    editable: true,
+    type: "number",
+  },
 ];
 
 function Leaderboard({ data }) {
-
-  const classes = useStyles();
   const [rows, setRows] = useState(data.rows);
 
   const [editRowsModel, setEditRowsModel] = useState({});
-  const handleEditRowsModelChange = useCallback((model) => {
-    setEditRowsModel(model);
-    let indexVal = null
-    const id = Object.keys(model)[0]
-    const index = rows.some((e,i)=>{
-      if(e.id === id){
-      indexVal = i
-      }
-    }) 
-    let getRows = rows 
-    getRows[indexVal].col3 = model[id].col3.value 
-    setRows(getRows)
-  }, [rows]);
-  if(!rows)
-  return <div>
-    Leadearboard will enable once there are participants
-  </div>
+  const handleEditRowsModelChange = useCallback(
+    (model) => {
+      setEditRowsModel(model);
+      let indexVal = null;
+      const id = Object.keys(model)[0];
+      const index = rows.some((e, i) => {
+        if (e.id === id) {
+          indexVal = i;
+        }
+      });
+      let getRows = rows;
+      getRows[indexVal].col3 = model[id].col3.value;
+      setRows(getRows);
+    },
+    [rows]
+  );
+  if (!rows)
+    return <div>Leadearboard will enable once there are participants</div>;
   const updateTable = async () => {
     const res = await fetch(`/api/tournaments/${data._id}`, {
       method: "PATCH",
@@ -65,19 +53,17 @@ function Leaderboard({ data }) {
   };
 
   return (
-    <div className={classes.root}>
-      
-
-        <DataGrid
+    <Box sx={{ background: "#282C38", width: "100%" }}>
+      <DataGrid
+        sx={{ color: "white" }}
         rows={rows}
         columns={columns}
-        className={classes.grid}
         autoHeight
         hideFooter
         editRowsModel={editRowsModel}
         onEditRowsModelChange={handleEditRowsModelChange}
       />
-      <div className="my-2 sm:my-4 text-right">
+      <div className="my-2 text-right sm:my-4">
         <Button
           onClick={() => updateTable()}
           variant="contained"
@@ -86,8 +72,7 @@ function Leaderboard({ data }) {
           Save Changes
         </Button>
       </div>
-
-    </div>
+    </Box>
   );
 }
 

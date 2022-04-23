@@ -23,15 +23,11 @@ function Participants({ data, id }) {
       <div>
         {participants.map((person, i) => (
           <div
-            className="bg-secondary p-2 my-2 grid grid-cols-searchBarAndBtnColums"
+            className="grid p-2 my-2 bg-secondary grid-cols-searchBarAndBtnColums"
             key={person}
           >
             <div>{person}</div>
-            <Button
-              onClick={() => removeUser(person, i)}
-              variant="contained"
-              color="primary"
-            >
+            <Button onClick={() => removeUser(person, i)} variant="contained">
               remove user
             </Button>
           </div>
