@@ -23,10 +23,10 @@ function Tournament({
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="grid sm:grid-cols-searchBarAndBtnColums auto-rows-searchBarAndBtnRowsSmall md:auto-rows-searchBarAndBtnRows gap-4 px-4">
+      <div className="grid sm:grid-cols-[1fr,max-content] auto-rows-[2.25em] md:auto-rows-[4em] gap-4 px-4">
         <div>
           <input
-            className="bg-secondary px-1 md:px-4 w-full h-full"
+            className="w-full h-full px-1 bg-secondary md:px-4"
             type="text"
             placeholder="Search..."
             onChange={(e) => setSearchStrDebounced(e.target.value)}
@@ -52,7 +52,7 @@ function Tournament({
             closePopUp={handlePopup}
             createUserTournament={createUserTournament}
           />
-          <div className="fixed opacity-60 bg-black inset-0 overflow-y-auto"></div>
+          <div className="fixed inset-0 overflow-y-auto bg-black opacity-60"></div>
         </>
       ) : null}
     </div>

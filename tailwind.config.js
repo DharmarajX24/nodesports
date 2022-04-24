@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ["./pages/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
+  content: ["./pages/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -10,35 +10,7 @@ module.exports = {
         greytext: "#ACADB1",
         secondarybranding: "#1380F0",
       },
-      flex: {
-        2: "2",
-      },
-      spacing: {
-        threedotfivepx: "3.5px",
-      },
-      boxShadow: {
-        game: "0 0 24px #1380f0",
-      },
-      gridTemplateColumns: {
-        searchBarAndBtnColums: "1fr max-content",
-      },
-      gridTemplateRows: {
-        minfullscreen: "1fr max-content",
-      },
-      gridAutoRows: {
-        searchBarAndBtnRows: "4em",
-        searchBarAndBtnRowsSmall: "2.25em",
-      },
-      margin: {
-        top100: "100vh",
-      },
-      fontFamily: {
-        banger: ["banger"],
-      },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };

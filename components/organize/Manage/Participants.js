@@ -22,7 +22,7 @@ function Participants({ data, id }) {
       <div>
         {participants.map((person, i) => (
           <div
-            className="grid p-2 my-2 bg-secondary grid-cols-searchBarAndBtnColums"
+            className="grid p-2 my-2 bg-secondary grid-cols-[1fr,max-content]"
             key={person}
           >
             <div>{person}</div>
