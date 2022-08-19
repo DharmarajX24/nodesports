@@ -1,40 +1,42 @@
+# Nuxt 3 Minimal Starter
 
-## About
-An open source web app to host your tournaments and events.
+Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
-## :rocket: Local Development
+## Setup
 
+Make sure to install the dependencies:
 
-#### Step-1
+```bash
+# yarn
+yarn install
 
-clone this repo
-
-```sh
-https://github.com/DharmarajX24/nodesports.git
-```
-
-#### Step-2
-
-Install all dependencies
-
-```sh
-cd nodesports
+# npm
 npm install
+
+# pnpm
+pnpm install --shamefully-hoist
 ```
 
-#### Step-2
+## Development Server
 
-Open frontend at [http://localhost:3000](http://localhost:3000)
+Start the development server on http://localhost:3000
 
-```sh
+```bash
 npm run dev
 ```
 
+## Production
 
-## Tech stack
-Next.js  
-Material UI  
-Vercel  
-tailwind CSS  
-auth0  
+Build the application for production:
 
+```bash
+npm run build
+```
+
+Locally preview production build:
+
+```bash
+npm run preview
+```
+
+Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
