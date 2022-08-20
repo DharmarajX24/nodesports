@@ -1,4 +1,4 @@
-import {defineNuxtConfig} from 'nuxt'
+import { defineNuxtConfig } from 'nuxt'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -7,15 +7,11 @@ export default defineNuxtConfig({
       postcssOptions: {
         plugins: {
           autoprefixer: {},
-          tailwindcss: {}
-        }
-      }
+          tailwindcss: {},
+        },
+      },
     },
   },
-  css: [
-    '@/assets/css/main.css',
-  ],
-  modules: [
-    '@pinia/nuxt'
-  ]
+  css: ['@/assets/css/main.css'],
+  modules: ['@pinia/nuxt'],
 })
